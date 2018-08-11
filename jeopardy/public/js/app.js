@@ -20,6 +20,9 @@
 //  if current user render sidebar otherwise render auth
 
 ReactDOM.render (
-  <h1>Jeopardy</h1>,
+  <div>
+  <Auth />
+  <h1>Jeopardy</h1>
+  </div>,
   document.querySelector('main')
 )
