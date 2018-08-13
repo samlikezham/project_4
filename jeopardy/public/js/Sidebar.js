@@ -1,24 +1,24 @@
 //  #########     CONSTRUCTOR     ###########
 class Sidebar extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      showQuestion: '',
-      showScore: true
-    }
-  }
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     showQuestion: '',
+  //     showScore: true
+  //   }
+  // }
 
-  showScore = () => {
-    this.setState({
-      showScore: this.state.show
-    })
-  }
+  // showScore = () => {
+  //   this.setState({
+  //     showScore: this.state.show
+  //   })
+  // }
   render() {
     return(
       <div className='score_box'>
       {/* scorekeeper */}
       <div className="scoreKeeper">
-        <h2>{this.state.score}</h2>
+        <h2>{this.props.inheritedstate.score}</h2>
         <button className="score_btn" onClick={this.addToScore}><i class="fas fa-plus"></i> Points</button>
         <button  className="score_btn" onClick={this.subtractScore}><i class="fas fa-minus"></i> Points</button>
       </div>

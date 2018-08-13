@@ -105,7 +105,7 @@ class App extends React.Component {
 				<div className="sidebar">
 					{(this.state.currentUser !== null) ?
 					 <h1>Sidebar Goes Here</h1> : <h1>Auth Goes Here</h1>}
-					 <Sidebar />
+					 <Sidebar inheritedstate={this.state}/>
 					 <Auth />
 					 <Prompt />
 				</div>

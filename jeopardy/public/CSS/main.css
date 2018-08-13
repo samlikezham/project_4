@@ -15,7 +15,7 @@ background: rgba(6, 12, 233, 0.2);
 }
 /* sidebar.js */
 .score_box {
-  width: 25%;
+  width: 33.3%;
   display: block;
   font-family: "OPTIKorinna-Agency Regular", Times, serif;
   color: var(--lightest-grey)
@@ -34,4 +34,5 @@ background: rgba(6, 12, 233, 0.2);
 .prompt{
   display: inline-block;
   padding: 0.3em 1.2em;
+  font-weight: bold;
 }
