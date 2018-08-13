@@ -4,23 +4,9 @@
 class Question extends React.Component {
 	constructor(props){
 		super(props)
-		this.isAnswered = this.isAnswered.bind(this)
 	}
-
-
-	//  toggle prompt - function passed in from sidebar
-	//  update scoreboard - function passed in from sidebar
-
-
 
 	//   ###########  FUNCTIONS     ###########
-	// get current value and set to !value
-	// answer toggle to show
-
-	isAnswered(){
-		
-	}
-
 
 
 //  ##############   RENDER    ###############
@@ -41,13 +27,13 @@ class Question extends React.Component {
 			</div>
 
 
-		
-			<button onClick={this.isAnswered}>Correct</button>
-			<button onClick={this.isAnswered}>Incorrect</button>
-			<button onClick={this.isAnswered}>No Answer</button>
-			{/* toggle score btns after */}
-			<div>
-				
+			{/*  reveal buttons to declare right, wrong, or didn't answer */}
+			{/*  after any of three buttons pressed */}
+			{/*  make call to edit score if right or wrong */}
+			<div className="scoreBtns">
+			{/* toggle score btns after clicked*/}		
+					<button onClick={()=> {this.props.addToScore()}}>Correct!</button>
+					<button onClick={()=> {this.props.subtractScore()}}>Incorrect</button>
 			</div>
 
 
@@ -62,11 +48,11 @@ class Question extends React.Component {
 
 }
 
-
-//    reveal buttons to declare right, wrong, or didn't answer
-//  after any of three buttons pressed
-//    make call to edit score if right or wrong
-//    call to toggle prompt
+	//  toggle prompt - function passed in from sidebar
+	//  update scoreboard - function passed in from sidebar
+	
+	// after point added
+	//   call to toggle prompt
 
 
 
