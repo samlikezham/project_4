@@ -6,7 +6,10 @@ class Question extends React.Component {
 		super(props)
 	}
 
-	//   ###########  FUNCTIONS     ###########
+
+//   ###########  FUNCTIONS     ###########
+
+
 
 
 //  ##############   RENDER    ###############
@@ -21,7 +24,7 @@ class Question extends React.Component {
 				<li><strong>Value:</strong> {this.props.data.value} </li>
 			</div>
 
-			{/* btn to reveal answer */}
+			{/* btn to reveal answer for question */}
 			<div className="answer">
 				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
@@ -34,6 +37,7 @@ class Question extends React.Component {
 			{/* toggle score btns after clicked*/}		
 					<button onClick={()=> {this.props.addToScore()}}>Correct!</button>
 					<button onClick={()=> {this.props.subtractScore()}}>Incorrect</button>
+					<button>Did Not Answer</button>
 			</div>
 
 
