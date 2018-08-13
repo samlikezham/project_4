@@ -115,19 +115,7 @@ class App extends React.Component {
 	}
 }
 
-<<<<<<< HEAD
-
-
 ReactDOM.render(
 	<App />,
 	document.querySelector('main')
 );
-=======
-ReactDOM.render (
-  <div>
-  <Auth />
-  <h1>Jeopardy</h1>
-  </div>,
-  document.querySelector('main')
-)
->>>>>>> 2dd5a9cc42b962ed6b610a8fb93e5d08c8127467
