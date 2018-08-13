@@ -136,7 +136,7 @@ class App extends React.Component {
 				{/* board */}
 				<button onClick={this.queryQuestion}>Prompt to Question</button>
 					{(this.state.currentQuestion !== null) ?
-					<Board data={this.state.currentQuestion}>
+					<Board inheritedState={this.state} data={this.state.currentQuestion}>
 					</Board> : null}
 
 				{/* toggle answer */}
