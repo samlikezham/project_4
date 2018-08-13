@@ -51,9 +51,7 @@ class Board extends React.Component {
 		console.log(this.props.data)
 		return <div className="container">
 			<ul>
-				<li><strong>Question:</strong> {this.props.data.question} </li>
-				<li><strong>Category:</strong> {this.props.data.category.title} </li>
-				<li><strong>Value:</strong> {this.props.data.value} </li>
+				
 			</ul>
 		</div>
 	}
