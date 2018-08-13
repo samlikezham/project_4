@@ -1,25 +1,12 @@
 //  #########     CONSTRUCTOR     ###########
+	//  PROPS we expect to receive
+	// question
 class Question extends React.Component {
 	constructor(props){
 		super(props)
-		this.toggleAnswer = this.toggleAnswer.bind(this)
-		this.state = {
-			currentQuestion: '',
-			showAnswer: false,
-			score: 0
-		}
-		console.log(props)
+		this.isAnswered = this.isAnswered.bind(this)
 	}
 
-	//  PROPS we expect to receive
-		// question
-	componentDidMount(){
-		if(this.props.data){
-			this.setState({
-				currentQuestion: this.props.data.question
-			})
-		}
-	}
 
 	//  toggle prompt - function passed in from sidebar
 	//  update scoreboard - function passed in from sidebar
@@ -29,35 +16,45 @@ class Question extends React.Component {
 	//   ###########  FUNCTIONS     ###########
 	// get current value and set to !value
 	// answer toggle to show
-	toggleAnswer(event){
-		let showAnswer = this.state.showAnswer
-		this.setState({
-			showAnswer: !showAnswer
-		})
+
+	isAnswered(){
+		
 	}
+
+
 
 //  ##############   RENDER    ###############
 	render(){
-		console.log(this.state)
+
 		return <div>
 
 			{/* if looking at question - show question */}
 			<div className="questionDisplay">
-				{(this.state.currentQuestion !== null) ?
-				<h1>{this.state.currentQuestion}</h1> : ''}
+				<h1>{this.props.data.question}</h1>
+				<li><strong>Category:</strong> {this.props.data.category.title}</li>
+				<li><strong>Value:</strong> {this.props.data.value} </li>
 			</div>
 
 			{/* btn to reveal answer */}
-			<div className="answerBtn">
-				{(this.state.showAnswer) ?
-				<li>{this.props.data.answer}</li> : ''}
-				<button onClick={this.toggleAnswer}>QUESTION - reveal answer</button>
+			<div className="answer">
+				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
+
+
+		
+			<button onClick={this.isAnswered}>Correct</button>
+			<button onClick={this.isAnswered}>Incorrect</button>
+			<button onClick={this.isAnswered}>No Answer</button>
+			{/* toggle score btns after */}
+			<div>
+				
+			</div>
+
+
 
 			{/* scorekeeper */}
 			<div className="scoreKeeper">
-				{(this.state.showAnswer) ?
-				<button onClick={this.addToScore}>Correct!</button> : ''}
+				{/*  */}
 			</div>
 
 		</div>
