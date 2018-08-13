@@ -152,7 +152,7 @@ class App extends React.Component {
 
 				{/* scorekeeper */}
 				<div className="scoreKeeper">
-					<h2>{this.state.score}</h2>
+					<h2>Score: {this.state.score}</h2>
 				</div>
 
 				{/* sidebar and auth */}
