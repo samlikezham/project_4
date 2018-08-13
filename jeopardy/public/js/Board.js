@@ -28,3 +28,33 @@
 //    each cell should display the value that's it's worth
 //      onclick event that will toggle to current question
 //  for each cell we give a ternary if spot in clickable array is true - display value amout and have onclick event - display null/blue screen if not clickable
+
+class Board extends React.Component {
+	constructor(props){
+		super(props)
+		// track in state
+			  // boardstate
+			  // current question
+			  // current user defaults to null
+			  // current score
+		this.state ={
+			boardState: false,
+			currentQuestion: null,
+			currentUser: null,
+			showAnswer: false,
+			score: 0
+		}
+	}
+
+
+	render() {
+		console.log(this.props.data)
+		return <div className="container">
+			<ul>
+				<li><strong>Question:</strong> {this.props.data.question} </li>
+				<li><strong>Category:</strong> {this.props.data.category.title} </li>
+				<li><strong>Value:</strong> {this.props.data.value} </li>
+			</ul>
+		</div>
+	}
+}
