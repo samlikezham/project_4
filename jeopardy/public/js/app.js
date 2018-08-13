@@ -9,7 +9,7 @@ class App extends React.Component {
 		this.showBoard = this.showBoard.bind(this)
 		this.queryQuestion = this.queryQuestion.bind(this)
 		this.createBoard = this.createBoard.bind(this)
-		// this.newQuestionBatch = this.newQuestionBatch.bind(this)
+
 		// track in state
 			  // boardstate
 			  // current question
@@ -72,6 +72,7 @@ class App extends React.Component {
 	}
 
 	queryQuestion(count=1){
+
 		fetch("http://jservice.io/api/random?count=#{count}").then((response)=>{
 			response.json().then((data)=>{
 				console.log(data);
@@ -133,17 +134,27 @@ class App extends React.Component {
 
 		return <div>
 
+				{/* question */}
+				<button onClick={this.queryQuestion}>Question</button>
+					{(this.state.currentQuestion !== null) ?
+					<Question 
+						data={this.state.currentQuestion}
+						toggleAnswer={this.toggleAnswer} />
+						: ''}
+
 				{/* board */}
 				<button onClick={this.queryQuestion}>Prompt to Question</button>
 					{(this.state.currentQuestion !== null) ?
+
 					<Board inheritedState={this.state} data={this.state.currentQuestion}>
 					</Board> : null}
+
 
 				{/* toggle answer */}
 				<div className="answer">
 					{(this.state.showAnswer) ?
-					<li>{this.state.currentQuestion.answer}</li> : ''}
-					<button onClick={this.toggleAnswer}>Click to reveal answer</button>
+					<li>Answer: {this.state.currentQuestion.answer}</li> : ''}
+					
 				</div>
 
 				{/* scorekeeper */}
@@ -156,8 +167,8 @@ class App extends React.Component {
 				{/* sidebar and auth */}
 				<div className="sidebar">
 					{(this.state.currentUser !== null) ?
-					 <h1>Sidebar Goes Here</h1> : <h1>Auth Goes Here</h1>}
-					 <Auth/>
+					 <Sidebar /> : <Auth />}
+
 				</div>
 		</div>
 	}

@@ -78,6 +78,7 @@ class Board extends React.Component {
 		}
 
 		return <div className="container">
+
 			<table>
 				<tr>
 					{categoryData}
