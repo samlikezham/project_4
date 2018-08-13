@@ -72,20 +72,11 @@ class App extends React.Component {
 	}
 
 	queryQuestion(count=1){
-
 		fetch("http://jservice.io/api/random?count=#{count}").then((response)=>{
 			response.json().then((data)=>{
 				console.log(data);
 				this.setState({
-					currentQuestion: data[0],
-					// questions: data.map(q => {
-					// 	return {
-					// 		category: q.category.title,
-					// 		value: q.value,
-					// 		question: q.question,
-					// 		answer: q.answer
-					// 	}
-					// })
+					currentQuestion: data[0]
 				})
 			})
 		})
@@ -102,12 +93,12 @@ class App extends React.Component {
 		})
 	}
 	// score setters
-	addToScore(){
+	addToScore(event){
 		console.log(this.state.currentQuestion)
 		let newScore = this.state.score + this.state.currentQuestion.value
 		this.setState({score: newScore})
 	}
-	subtractScore(){
+	subtractScore(event){
 		let newScore = this.state.score - this.state.currentQuestion.value
 		this.setState({score: newScore})
 	}
@@ -139,7 +130,9 @@ class App extends React.Component {
 					{(this.state.currentQuestion !== null) ?
 					<Question 
 						data={this.state.currentQuestion}
-						toggleAnswer={this.toggleAnswer} />
+						toggleAnswer={this.toggleAnswer}
+						addToScore={this.addToScore}
+						subtractScore={this.subtractScore} />
 						: ''}
 
 				{/* board */}
@@ -160,8 +153,6 @@ class App extends React.Component {
 				{/* scorekeeper */}
 				<div className="scoreKeeper">
 					<h2>{this.state.score}</h2>
-					<button onClick={this.addToScore}>Add Point</button>
-					<button onClick={this.subtractScore}>Subtract Point</button>
 				</div>
 
 				{/* sidebar and auth */}
