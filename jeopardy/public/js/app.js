@@ -1,5 +1,6 @@
 
 //    ########    CONSTRUCTOR   ###########
+<<<<<<< HEAD
 class App extends React.Component {
 	constructor(props){
 		super(props)
@@ -121,3 +122,32 @@ ReactDOM.render(
 	<App />,
 	document.querySelector('main')
 );
+=======
+//  track in state
+//  current question
+//  boolean show question - if true - show question if false - show prompt
+//  current user defaults to null
+//    boardstate
+//    current score
+//    prompt toggle to show
+//  question
+//    answer toggle to show
+
+
+//    #########   FUNCTIONS   ############
+//  setters for everything
+
+
+//    ########    RENDER    ############
+//  board
+//  sidebar
+//  if current user render sidebar otherwise render auth
+
+ReactDOM.render (
+  <div>
+  <Auth />
+  <h1>Jeopardy</h1>
+  </div>,
+  document.querySelector('main')
+)
+>>>>>>> 3866a672dfd181d5b307d50bf75924267e0d4cd3
