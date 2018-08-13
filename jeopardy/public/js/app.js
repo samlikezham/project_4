@@ -28,7 +28,7 @@ class App extends React.Component {
 		fetch(`http://jservice.io/api/random?count=${count}`).then((response)=>{
 			response.json().then((data)=>{
 				console.log(data);
-				this.setState({ 
+				this.setState({
 					currentQuestion: data[0],
 					// questions: data.map(q => {
 					// 	return {
@@ -88,13 +88,13 @@ class App extends React.Component {
 
 				{/* board */}
 				<button onClick={this.queryQuestion}>Prompt to Question</button>
-					{(this.state.currentQuestion !== null) ? 
+					{(this.state.currentQuestion !== null) ?
 					<Board data={this.state.currentQuestion}>
 					</Board> : null}
 
 				{/* toggle answer */}
 				<div className="answer">
-					{(this.state.showAnswer) ? 
+					{(this.state.showAnswer) ?
 					<li>{this.state.currentQuestion.answer}</li> : ''}
 					<button onClick={this.toggleAnswer}>Click to reveal answer</button>
 				</div>
@@ -115,9 +115,19 @@ class App extends React.Component {
 	}
 }
 
+<<<<<<< HEAD
 
 
 ReactDOM.render(
 	<App />,
 	document.querySelector('main')
 );
+=======
+ReactDOM.render (
+  <div>
+  <Auth />
+  <h1>Jeopardy</h1>
+  </div>,
+  document.querySelector('main')
+)
+>>>>>>> 2dd5a9cc42b962ed6b610a8fb93e5d08c8127467
