@@ -44,15 +44,47 @@ class Board extends React.Component {
 			showAnswer: false,
 			score: 0
 		}
+		/**
+
+		**/
 	}
 
+	selectQuestion(cat, row, value) {
+		console.log('cat: ' + cat);
+		console.log('row: ' + row);
+		console.log('value: ' + value);
+	}
 
 	render() {
-		console.log(this.props.data)
+		console.log(this.props.inheritedState);
+		let categories = this.props.inheritedState.categories
+		let questions = this.props.inheritedState.questions
+		let boardState = this.props.inheritedState.boardState
+		let categoryData = []
+		let boardData = []
+		let fiveArr = [0,1,2,3,4]
+		let sixArr = [0,1,2,3,4,5]
+
+		for (let cat = 0; cat < categories.length; cat++) {
+			categoryData.push(<th>{categories[cat]}</th>)
+		}
+		for (let row = 0; row < questions[0].length; row++) {
+			let rowData = []
+			let value = 1*200 + row*200
+			for (let cat = 0; cat < questions.length; cat++) {
+				rowData.push((boardState[cat,row]) ? <td onClick={() => this.selectQuestion(cat, row, value)}>{value}</td> : <td></td>)
+			}
+			boardData.push(<tr>{rowData}</tr>)
+		}
+
 		return <div className="container">
-			<ul>
-				
-			</ul>
+
+			<table>
+				<tr>
+					{categoryData}
+				</tr>
+				{boardData}
+			</table>
 		</div>
 	}
 }
