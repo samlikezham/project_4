@@ -99,17 +99,15 @@ class App extends React.Component {
 					<button onClick={this.toggleAnswer}>Click to reveal answer</button>
 				</div>
 
-				{/* scorekeeper */}
-				<div className="scoreKeeper">
-					<h2>{this.state.score}</h2>
-					<button onClick={this.addToScore}>Add Point</button>
-					<button onClick={this.subtractScore}>Subtract Point</button>
-				</div>
+
 
 				{/* sidebar and auth */}
 				<div className="sidebar">
 					{(this.state.currentUser !== null) ?
 					 <h1>Sidebar Goes Here</h1> : <h1>Auth Goes Here</h1>}
+					 <Sidebar />
+					 <Auth />
+					 <Prompt />
 				</div>
 		</div>
 	}
