@@ -1,6 +1,5 @@
 
 //    ########    CONSTRUCTOR   ###########
-<<<<<<< HEAD
 class App extends React.Component {
 	constructor(props){
 		super(props)
@@ -29,7 +28,7 @@ class App extends React.Component {
 		fetch(`http://jservice.io/api/random?count=${count}`).then((response)=>{
 			response.json().then((data)=>{
 				console.log(data);
-				this.setState({ 
+				this.setState({
 					currentQuestion: data[0],
 					// questions: data.map(q => {
 					// 	return {
@@ -89,13 +88,13 @@ class App extends React.Component {
 
 				{/* board */}
 				<button onClick={this.queryQuestion}>Prompt to Question</button>
-					{(this.state.currentQuestion !== null) ? 
+					{(this.state.currentQuestion !== null) ?
 					<Board data={this.state.currentQuestion}>
 					</Board> : null}
 
 				{/* toggle answer */}
 				<div className="answer">
-					{(this.state.showAnswer) ? 
+					{(this.state.showAnswer) ?
 					<li>{this.state.currentQuestion.answer}</li> : ''}
 					<button onClick={this.toggleAnswer}>Click to reveal answer</button>
 				</div>
@@ -116,33 +115,6 @@ class App extends React.Component {
 	}
 }
 
-
-
-ReactDOM.render(
-	<App />,
-	document.querySelector('main')
-);
-=======
-//  track in state
-//  current question
-//  boolean show question - if true - show question if false - show prompt
-//  current user defaults to null
-//    boardstate
-//    current score
-//    prompt toggle to show
-//  question
-//    answer toggle to show
-
-
-//    #########   FUNCTIONS   ############
-//  setters for everything
-
-
-//    ########    RENDER    ############
-//  board
-//  sidebar
-//  if current user render sidebar otherwise render auth
-
 ReactDOM.render (
   <div>
   <Auth />
@@ -150,4 +122,3 @@ ReactDOM.render (
   </div>,
   document.querySelector('main')
 )
->>>>>>> 3866a672dfd181d5b307d50bf75924267e0d4cd3
