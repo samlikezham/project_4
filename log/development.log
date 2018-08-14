@@ -14,9 +14,9 @@ Completed 200 OK in 38ms (Views: 15.1ms | ActiveRecord: 0.0ms)
   [1m[35m (308.9ms)[0m  [1m[35mCREATE DATABASE "jeopardy_test" ENCODING = 'unicode'[0m
   ↳ bin/rails:9
 Started GET "/public/Assets/Jeopardy-theme-song.mp3" for 127.0.0.1 at 2018-08-11 13:55:43 -0600
-  
+
 ActionController::RoutingError (No route matches [GET] "/public/Assets/Jeopardy-theme-song.mp3"):
-  
+
 actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
 web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
@@ -45,12 +45,12 @@ puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/css/Assets/Jeopardy!_logo.png" for 127.0.0.1 at 2018-08-13 17:39:29 -0600
-  
+
 PG::ConnectionBad (could not connect to server: No such file or directory
 	Is the server running locally and accepting
 	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
 ):
-  
+
 pg (1.0.0) lib/pg.rb:56:in `initialize'
 pg (1.0.0) lib/pg.rb:56:in `new'
 pg (1.0.0) lib/pg.rb:56:in `connect'
@@ -100,12 +100,12 @@ puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/css/Assets/Jeopardy!_logo.png" for 127.0.0.1 at 2018-08-13 17:39:46 -0600
-  
+
 PG::ConnectionBad (could not connect to server: No such file or directory
 	Is the server running locally and accepting
 	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
 ):
-  
+
 pg (1.0.0) lib/pg.rb:56:in `initialize'
 pg (1.0.0) lib/pg.rb:56:in `new'
 pg (1.0.0) lib/pg.rb:56:in `connect'
@@ -155,12 +155,12 @@ puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
 Started GET "/css/Assets/Jeopardy!_logo.png" for 127.0.0.1 at 2018-08-13 17:40:25 -0600
-  
+
 PG::ConnectionBad (could not connect to server: No such file or directory
 	Is the server running locally and accepting
 	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
 ):
-  
+
 pg (1.0.0) lib/pg.rb:56:in `initialize'
 pg (1.0.0) lib/pg.rb:56:in `new'
 pg (1.0.0) lib/pg.rb:56:in `connect'
