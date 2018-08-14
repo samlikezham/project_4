@@ -8,10 +8,16 @@ class Prompt extends React.Component {
 // ############   RENDER     ###############
 	// prompt to pick another question
 	render() {
+		console.log(this.props.showPrompt)
 		return(
 			<div className="container">
-				<button onClick={()=> this.props.queryQuestion()}>
-				Get Next Question</button>
+				{
+					(this.props.showPrompt) 
+					? 
+					<button onClick={()=> {this.props.queryQuestion(); this.props.togglePromptOff()}}>
+					Get Next Question
+					</button> : null
+				}
 			</div>
 		)
 	}

@@ -9,20 +9,22 @@ class Question extends React.Component {
 // side bar looks at current state to show prompt?
 
 
-//  ##############   RENDER    ###############
 	render(){
-
 		return <div class="questionContainer">
 			{/* display question */}
 			<div className="questionDisplay">
-				<h1>{this.props.data.question}</h1>
-
-				<li><strong>Value:</strong> {this.props.data.value} </li>
+				<h1>{this.props.inheritedState.question}</h1>
+				<li><strong>Value:</strong> {this.props.inheritedState.value} </li>
 			</div>
 
 			{/* btn to reveal answer for question */}
 			<div className="answer">
-				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
+				{(this.props.showAnswer) 
+					? 
+						<li><strong>Answer:</strong>{this.props.inheritedState.answer}</li> 
+					: 
+						null} 
+					<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
 
 
@@ -32,26 +34,23 @@ class Question extends React.Component {
 			<div className="scoreBtns">
 				{/*  after point is added/subtracted call to toggle prompt */}
 					<button onClick={()=>
-					{this.props.addToScore(); this.togglePromptOn()}}>
+					{this.props.addToScore(); this.props.togglePromptOn()}}>
 					Correct!</button>
 					<button onClick={()=>
-					{this.props.subtractScore(); this.togglePromptOn()}}>
+					{this.props.subtractScore(); this.props.togglePromptOn()}}>
 					Incorrect</button>
-					<button onClick={this.togglePromptOn}>Did Not Answer</button>
-			</div>
-
-			{/* scorekeeper //  toggle prompt - function passed in from sidebar */}
-			<div className="questionPrompt">
-				{(this.state.showPrompt == true) ?
-				<button onClick={()=>
-				{this.props.queryQuestion(); this.togglePromptOff()}}>
-				Get Next Question</button> : ''}
-			</div>
-
-			{/* scorekeeper  //  update scoreboard - function passed in from sidebar */}
-			<div className="scoreKeeper">
-				{/*  */}
+					<button onClick={this.props.togglePromptOn}>
+					Did Not Answer</button>
 			</div>
 		</div>
 	}
 }
+
+
+{/* scorekeeper //  toggle prompt - function passed in from sidebar */}
+			// <div className="questionPrompt">
+			// 	{(this.state.showPrompt == true) ?
+			// 	<button onClick={()=>
+			// 	{this.props.queryQuestion(); this.togglePromptOff()}}>
+			// 	Get Next Question</button> : ''}
+			// </div>
