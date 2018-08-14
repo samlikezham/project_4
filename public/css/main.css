@@ -16,6 +16,7 @@ RGB */
 body {
 background: var(--jeopardy-blue);
 font-family: "OPTIKorinna-Agency Regular", Times, serif;
+color: white;
 }
 header {
   width: 100%;
@@ -23,11 +24,13 @@ header {
   text-align: center;
   background-position: top;
   background-repeat: no-repeat;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .main_nav {
-  margin: 0;
-  padding: 0;
+  margin-top: 5%;
+  padding: 5px;
   overflow: hidden;
   border: 5px solid #c0c0c0;
   box-shadow: inset 0px 0px 20px 0px rgba(255,255,255,1);
@@ -52,14 +55,35 @@ li , a {
     letter-spacing: 5px;
 }
 table {
-  display: grid;
-  grid-gap: 10px;
-  width: 75%;
-
+  width: 1560px;
+  margin: 0 auto;
   font-size: 2em;
-  border: 1px solid white;
+  border: 3px groove rgba(0,0,0,0.8);
   color: white;
   padding: .8em;
+  /* border-spacing: 0; */
+
+}
+th {
+  width: 250px;
+  height: 200px;
+  border: 3px solid  rgba(0,0,0,0.8);
+  box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
+  text-transform: uppercase;
+}
+td {
+  border: 3px solid rgba(0,0,0,0.8);
+  /* box-sizing: border-box; */
+  width: 250px;
+  height: 200px;
+  text-align: center;
+  box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
+  letter-spacing: 5px;
+  font-size: 1.5em;
+}
+td:hover {
+  border: 3px solid rgba(255,215,0,1);
+  box-shadow: inset 0px 0px 20px 3px rgba(255,215,0,1);
 }
 
 
