@@ -3,22 +3,25 @@
 	// question
 class Question extends React.Component {
 	constructor(props){
-		super(props)
-		this.isAnswered = this.isAnswered.bind(this)
+		super(props);
+		this.togglePromptOn = this.togglePromptOn.bind(this)
+		this.togglePromptOff = this.togglePromptOff.bind(this)
+		this.state = {
+			showPrompt: false
+		}
 	}
 
 
-	//  toggle prompt - function passed in from sidebar
-	//  update scoreboard - function passed in from sidebar
-
-
-
-	//   ###########  FUNCTIONS     ###########
-	// get current value and set to !value
-	// answer toggle to show
-
-	isAnswered(){
-
+//   ###########  FUNCTIONS     ###########
+	togglePromptOn(){
+		this.setState({
+			showPrompt: true
+		})
+	}
+	togglePromptOff(){
+		this.setState({
+			showPrompt: false
+		})
 	}
 
 
@@ -26,37 +29,46 @@ class Question extends React.Component {
 //  ##############   RENDER    ###############
 	render(){
 
-		return <div>
-
-			{/* if looking at question - show question */}
+		return <div class="questionContainer">
+			{/* display question */}
 			<div className="questionDisplay">
 				<h1>{this.props.data.question}</h1>
 
 				<li><strong>Value:</strong> {this.props.data.value} </li>
 			</div>
 
-			{/* btn to reveal answer */}
+			{/* btn to reveal answer for question */}
 			<div className="answer">
 				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
 
 
-
-			<button onClick={this.isAnswered}>Correct</button>
-			<button onClick={this.isAnswered}>Incorrect</button>
-			<button onClick={this.isAnswered}>No Answer</button>
-			{/* toggle score btns after */}
-			<div>
-
+			{/*  reveal buttons to declare right, wrong, or didn't answer */}
+			{/*  after any of three buttons pressed */}
+			{/*  make call to edit score if right or wrong */}
+			<div className="scoreBtns">
+				{/*  after point is added/subtracted call to toggle prompt */}
+					<button onClick={()=>
+					{this.props.addToScore(); this.togglePromptOn()}}>
+					Correct!</button>
+					<button onClick={()=>
+					{this.props.subtractScore(); this.togglePromptOn()}}>
+					Incorrect</button>
+					<button onClick={this.togglePromptOn}>Did Not Answer</button>
 			</div>
 
+			{/* scorekeeper //  toggle prompt - function passed in from sidebar */}
+			<div className="questionPrompt">
+				{(this.state.showPrompt == true) ?
+				<button onClick={()=>
+				{this.props.queryQuestion(); this.togglePromptOff()}}>
+				Get Next Question</button> : ''}
+			</div>
 
-
-			{/* scorekeeper */}
+			{/* scorekeeper  //  update scoreboard - function passed in from sidebar */}
 			<div className="scoreKeeper">
 				{/*  */}
 			</div>
-
 		</div>
 	}
 
