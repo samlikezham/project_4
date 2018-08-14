@@ -4,25 +4,6 @@
 class Question extends React.Component {
 	constructor(props){
 		super(props);
-		this.togglePromptOn = this.togglePromptOn.bind(this)
-		this.togglePromptOff = this.togglePromptOff.bind(this)
-		this.state = {
-			showPrompt: false
-		}
-	}
-
-
-//   ###########  FUNCTIONS     ###########
-	togglePromptOn(){
-		this.setState({
-			showPrompt: true
-		})
-	}
-	togglePromptOff(){
-		this.setState({
-			showPrompt: false
-		})
-
 	}
 // side bar has score
 // side bar looks at current state to show prompt?

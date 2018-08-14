@@ -3,8 +3,24 @@
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
+    	this.togglePromptOn = this.togglePromptOn.bind(this)
+		this.togglePromptOff = this.togglePromptOff.bind(this)
+		this.state = {
+			showPrompt: false
+		}
+  	}
 
-  }
+  	togglePromptOn(){
+		this.setState({
+			showPrompt: true
+		})
+	}
+	togglePromptOff(){
+		this.setState({
+			showPrompt: false
+		})
+	}
+
   render() {
     console.log(this.props.inheritedState);
     let inheritedState = this.props.inheritedState
@@ -14,7 +30,12 @@ class Sidebar extends React.Component {
         {inheritedState.score}
         </div>
         <div className="toggle_prompt">
-        {(inheritedState.currentQuestion) ? <Question data={inheritedState.currentQuestion} toggleAnswer={inheritedState.toggleAnswer}/>: <Prompt/> }
+        {(inheritedState.currentQuestion) ? 
+        	<Question 
+	        	data={inheritedState.currentQuestion} 
+	        	toggleAnswer={inheritedState.toggleAnswer}/> : 
+	        <Prompt /> 
+	        }
         </div>
       </div>
     )
