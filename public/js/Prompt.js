@@ -10,8 +10,7 @@ class Prompt extends React.Component {
 	render() {
 		return(
 			<div className="container">
-				<button onClick={()=> this.props.queryQuestion()}>
-				Get Next Question</button>
+				<h2>Select the next question</h2>
 			</div>
 		)
 	}
