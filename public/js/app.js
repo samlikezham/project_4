@@ -133,11 +133,11 @@ class App extends React.Component {
 	render(){
 
 		return <div>
-
+				 
 				{/* question */}
 				<button onClick={this.queryQuestion}>Question</button>
 					{(this.state.currentQuestion !== null) ?
-					<Question 
+					<Question
 						data={this.state.currentQuestion}
 						toggleAnswer={this.toggleAnswer} />
 						: ''}
@@ -154,7 +154,7 @@ class App extends React.Component {
 				<div className="answer">
 					{(this.state.showAnswer) ?
 					<li>Answer: {this.state.currentQuestion.answer}</li> : ''}
-					
+
 				</div>
 
 				{/* scorekeeper */}
