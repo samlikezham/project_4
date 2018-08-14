@@ -31,13 +31,15 @@ class Question extends React.Component {
 					<button onClick={()=>
 					{this.props.addToScore(); this.props.togglePromptOn()}}>
 					Correct!</button>
+
 					<button onClick={()=>
 					{this.props.subtractScore(); this.props.togglePromptOn()}}>
 					Incorrect</button>
+					
 					<button onClick={this.props.togglePromptOn}>
 					Did Not Answer</button>
 			</div>
-			
+
 		</div>
 	}
 }
