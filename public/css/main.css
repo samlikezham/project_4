@@ -38,6 +38,11 @@ a {
   text-decoration: none;
 
 }
+.container {
+  display: flex;
+  justify-content: flex-end;
+  width: 75%;
+}
 
 /* sidebar.js */
 .scorekeeper {
