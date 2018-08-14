@@ -21,7 +21,6 @@ class Sidebar extends React.Component {
 	}
 
   render() {
-    console.log(this.props);
     let inheritedState = this.props.inheritedState
     return(
       <div className="display">
@@ -29,28 +28,15 @@ class Sidebar extends React.Component {
         	<strong>Score:</strong> {inheritedState.score}
         </div>
         <div className="toggle_prompt">
-        {(inheritedState.currentQuestion) ? 
-        	<Question 
-	        	inheritedState={inheritedState.currentQuestion}
-	        	showAnswer={inheritedState.showAnswer}
-	        	toggleAnswer={this.props.toggleAnswer}
-	        	addToScore={this.props.addToScore}
-	        	subtractScore={this.props.subtractScore}
-	        	queryQuestion={this.props.queryQuestion}
-	        	togglePromptOn={this.togglePromptOn}
-	        	togglePromptOff={this.togglePromptOff}
-	        /> 
-	        	: 
-	        <Prompt />
-	        }
-      		{/* testing prompt down here for now */}
-	        <Prompt
-	        	showPrompt={this.state.showPrompt}
-	        	queryQuestion={this.props.queryQuestion}
-	        	togglePromptOff={this.togglePromptOff}
-	        	toggleAnswerOff={this.props.toggleAnswerOff}
-	        />
+        {(inheritedState.showQuestion) ? <Question
+          inheritedState={inheritedState}
+          toggleAnswer={this.props.toggleAnswer}
+          />: <Prompt/> }
         </div>
+        {(inheritedState.showAnswer) ? <Answer inheritedState={this.props.inheritedState} pickAgain={this.props.pickAgain}
+	        addToScore={this.props.addToScore}
+	        subtractScore={this.props.subtractScore}
+        /> : null}
       </div>
     )
   }

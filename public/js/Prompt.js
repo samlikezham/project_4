@@ -7,13 +7,8 @@ class Prompt extends React.Component {
 	render() {
 		return(
 			<div className="container">
-				{
-					(this.props.showPrompt) 
-					? 
-					<button onClick={()=> {this.props.queryQuestion(); this.props.togglePromptOff(); this.props.toggleAnswerOff()}}>
-					Get Next Question
-					</button> : null
-				}
+				<h2>Select the next question</h2>
+
 			</div>
 		)
 	}
