@@ -23,7 +23,8 @@ class Question extends React.Component {
 			showPrompt: false
 		})
 	}
-
+// side bar has score
+// side bar looks at current state to show prompt?
 
 
 //  ##############   RENDER    ###############
@@ -71,11 +72,4 @@ class Question extends React.Component {
 			</div>
 		</div>
 	}
-
 }
-
-
-//    reveal buttons to declare right, wrong, or didn't answer
-//  after any of three buttons pressed
-//    make call to edit score if right or wrong
-//    call to toggle prompt
