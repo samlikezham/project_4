@@ -5,7 +5,6 @@ class Prompt extends React.Component {
 		super(props)
 	}
 	render() {
-		console.log(this.props.showPrompt)
 		return(
 			<div className="container">
 				{
