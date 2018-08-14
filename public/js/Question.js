@@ -22,7 +22,6 @@ class Question extends React.Component {
 					<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
 
-
 			{/*  reveal buttons to declare right, wrong, or didn't answer */}
 			{/*  after any of three buttons pressed */}
 			{/*  make call to edit score if right or wrong */}
@@ -35,11 +34,10 @@ class Question extends React.Component {
 					<button onClick={()=>
 					{this.props.subtractScore(); this.props.togglePromptOn()}}>
 					Incorrect</button>
-					
+
 					<button onClick={this.props.togglePromptOn}>
 					Did Not Answer</button>
 			</div>
-
 		</div>
 	}
 }
