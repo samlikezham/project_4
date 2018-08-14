@@ -133,7 +133,7 @@ class App extends React.Component {
 	render(){
 
 		return <div>
-				 
+
 				{/* question */}
 				<button onClick={this.queryQuestion}>Question</button>
 					{(this.state.currentQuestion !== null) ?
@@ -159,15 +159,15 @@ class App extends React.Component {
 
 				{/* scorekeeper */}
 				<div className="scoreKeeper">
-					<h2>{this.state.score}</h2>
-					<button onClick={this.addToScore}>Add Point</button>
-					<button onClick={this.subtractScore}>Subtract Point</button>
+				  <h2>{this.state.score}</h2>
+				  <button onClick={this.addToScore}>Add Point</button>
+				  <button onClick={this.subtractScore}>Subtract Point</button>
 				</div>
+
 
 				{/* sidebar and auth */}
 				<div className="sidebar">
-					{(this.state.currentUser !== null) ?
-					 <Sidebar /> : <Auth />}
+			<Sidebar inheritedState={this.state}/>
 
 				</div>
 		</div>
