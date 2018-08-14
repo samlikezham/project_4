@@ -55,7 +55,16 @@ class Board extends React.Component {
 			let rowData = []
 			let value = 1*200 + row*200
 			for (let cat = 0; cat < questions.length; cat++) {
-				rowData.push((boardState[cat][row]) ? <td onClick={() => this.selectQuestion(cat, row, value)}>{value}</td> : <td></td>)
+				rowData.push(
+					(boardState[cat][row])
+						?
+						 	(this.props.inheritedState.showQuestion)
+								?
+									<td>{value}</td>
+								:
+									<td onClick={() => this.selectQuestion(cat, row, value)}>{value}</td>
+						:
+							<td></td>)
 			}
 			boardData.push(<tr>{rowData}</tr>)
 		}

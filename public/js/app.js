@@ -10,6 +10,7 @@ class App extends React.Component {
 		this.queryQuestion = this.queryQuestion.bind(this)
 		this.createBoard = this.createBoard.bind(this)
 		this.selectQuestion = this.selectQuestion.bind(this)
+		this.pickAgain = this.pickAgain.bind(this)
 
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
@@ -87,13 +88,18 @@ class App extends React.Component {
 	}
 	// score setters
 	addToScore(event){
-		console.log(this.state.currentQuestion)
-		let newScore = this.state.score + this.state.currentQuestion.value
+		let newScore = this.state.score + this.state.currentValue
 		this.setState({score: newScore})
+		this.pickAgain()
 	}
 	subtractScore(event){
-		let newScore = this.state.score - this.state.currentQuestion.value
+		let newScore = this.state.score - this.state.currentValue
 		this.setState({score: newScore})
+		this.pickAgain()
+	}
+
+	pickAgain() {
+		this.setState({showQuestion:false, showAnswer:false})
 	}
 
 	// board setter
@@ -115,7 +121,6 @@ class App extends React.Component {
 		tempBoardState[cat][row] = false
 		this.setState({boardState: tempBoardState, currentValue: value, currentQuestion: this.state.questions[cat][row], showQuestion: true, showAnswer: false})
 	}
-
 
 //   ########    RENDER    ############
 	//  boolean show question - if true - show question if false - show prompt
@@ -148,7 +153,7 @@ class App extends React.Component {
 						toggleAnswer={this.toggleAnswer}
 						addToScore={this.addToScore}
 						subtractScore={this.subtractScore}
-						queryQuestion={this.queryQuestion}
+						pickAgain={this.pickAgain}
 					/>
 				</div>
 		</div>
