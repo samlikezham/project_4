@@ -14,7 +14,7 @@ class App extends React.Component {
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
 			currentQuestion: null, // describes currently selected question
-			currentUser: null, // describes current user
+			currentUser: "bob", // describes current user
 			showAnswer: false, // describes whether answer should be shown in the question class
 			score: 0, // describes the player's score
 			questions: [], // describes the total list of questions
@@ -124,17 +124,26 @@ class App extends React.Component {
 		return <div>
 
 				{/* board */}
-				{(!!this.state.questions.length) ? 
-					<Board 
-						inheritedState={this.state} 
-						data={this.state.currentQuestion} 
-						selectQuestion={this.selectQuestion}>
-					</Board> : null}
+				<div class="mainContainer"
+					{(this.state.currentUser)
+						? (!!this.state.questions.length)
+							?
+								<Board
+									inheritedState={this.state}
+									data={this.state.currentQuestion}
+									selectQuestion={this.selectQuestion}>
+								</Board>
+							:
+								null
+						:
+							<Auth/>
+					}
+				</div>
 
 
 				{/* sidebar and auth */}
 				<div className="sidebar">
-					<Sidebar 
+					<Sidebar
 						inheritedState={this.state}
 						toggleAnswer={this.toggleAnswer}
 						addToScore={this.addToScore}
