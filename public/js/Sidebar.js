@@ -7,6 +7,7 @@ class Sidebar extends React.Component {
   }
   render() {
     console.log(this.props.inheritedState);
+    console.log(this.props.inheritedState.showAnswer);
     let inheritedState = this.props.inheritedState
     return(
       <div className="display">
@@ -14,8 +15,15 @@ class Sidebar extends React.Component {
         {inheritedState.score}
         </div>
         <div className="toggle_prompt">
-        {(inheritedState.currentQuestion) ? <Question data={inheritedState.currentQuestion} toggleAnswer={inheritedState.toggleAnswer}/>: <Prompt/> }
+        {(inheritedState.showQuestion) ? <Question
+          inheritedState={inheritedState}
+          toggleAnswer={this.props.toggleAnswer}
+          />: <Prompt/> }
         </div>
+        {(inheritedState.showAnswer) ? <Answer inheritedState={this.props.inheritedState} pickAgain={this.props.pickAgain}
+        addToScore={this.props.addToScore}
+        subtractScore={this.props.subtractScore}
+        /> : null}
       </div>
     )
   }
