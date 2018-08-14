@@ -12,12 +12,7 @@ class Question extends React.Component {
 	}
 
 
-<<<<<<< HEAD
-//   ###########  FUNCTIONS    ###########
-=======
-
 //   ###########  FUNCTIONS     ###########
->>>>>>> 1c3c9bb8c6769a01f4f78049f3344352f740f3e5
 	togglePromptOn(){
 		this.setState({
 			showPrompt: true
@@ -80,12 +75,3 @@ class Question extends React.Component {
 			</div>
 		</div>
 	}
-
-<<<<<<< HEAD
-}
-=======
-}
-
-
-
->>>>>>> 1c3c9bb8c6769a01f4f78049f3344352f740f3e5
