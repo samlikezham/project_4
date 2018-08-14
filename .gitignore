@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 Gemfile
-=======
-gemfile
->>>>>>> 4ec24c5c249c675d4232eb052a0bc330e8a7e517
 *.rbc
 capybara-*.html
 .rspec
