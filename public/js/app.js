@@ -139,7 +139,7 @@ class App extends React.Component {
 
 					{(!!this.state.questions.length) ? <Board inheritedState={this.state} data={this.state.currentQuestion} selectQuestion={this.selectQuestion}>
 					</Board> : null}
-
+			
 
 				{/* toggle answer */}
 				<div className="answer">
