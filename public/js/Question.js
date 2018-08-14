@@ -18,7 +18,7 @@ class Question extends React.Component {
 	// answer toggle to show
 
 	isAnswered(){
-		
+
 	}
 
 
@@ -31,7 +31,7 @@ class Question extends React.Component {
 			{/* if looking at question - show question */}
 			<div className="questionDisplay">
 				<h1>{this.props.data.question}</h1>
-				<li><strong>Category:</strong> {this.props.data.category.title}</li>
+
 				<li><strong>Value:</strong> {this.props.data.value} </li>
 			</div>
 
@@ -41,13 +41,13 @@ class Question extends React.Component {
 			</div>
 
 
-		
+
 			<button onClick={this.isAnswered}>Correct</button>
 			<button onClick={this.isAnswered}>Incorrect</button>
 			<button onClick={this.isAnswered}>No Answer</button>
 			{/* toggle score btns after */}
 			<div>
-				
+
 			</div>
 
 
@@ -67,12 +67,3 @@ class Question extends React.Component {
 //  after any of three buttons pressed
 //    make call to edit score if right or wrong
 //    call to toggle prompt
-
-
-
-
-
-
-
-
-
