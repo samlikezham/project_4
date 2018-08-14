@@ -1,4 +1,25 @@
+
 //  #########     CONSTRUCTOR     ###########
+class Sidebar extends React.Component {
+  constructor(props) {
+    super(props)
+
+  }
+  render() {
+    console.log(this.props.inheritedState);
+    let inheritedState = this.props.inheritedState
+    return(
+      <div className="display">
+        <div className="display_score">
+        {inheritedState.score}
+        </div>
+        <div className="toggle_prompt">
+        {(inheritedState.currentQuestion) ? <Question data={inheritedState.currentQuestion} toggleAnswer={inheritedState.toggleAnswer}/>: <Prompt/> }
+        </div>
+      </div>
+    )
+  }
+}
 //  Keep track of in state
 //    current score
 //    prompt toggle to show

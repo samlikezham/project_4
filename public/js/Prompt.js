@@ -6,7 +6,7 @@ class Prompt extends React.Component {
 
 
 // ############   RENDER     ###############
-	// prompt to pick another question 
+	// prompt to pick another question
 	render() {
 		return(
 			<div className="container">

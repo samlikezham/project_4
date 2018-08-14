@@ -75,3 +75,4 @@ class Question extends React.Component {
 			</div>
 		</div>
 	}
+}
