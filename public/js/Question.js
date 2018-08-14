@@ -66,7 +66,6 @@ class Question extends React.Component {
 				<button onClick={()=>
 				{this.props.queryQuestion(); this.togglePromptOff()}}>
 				Get Next Question</button> : ''}
-
 			</div>
 
 			{/* scorekeeper  //  update scoreboard - function passed in from sidebar */}
