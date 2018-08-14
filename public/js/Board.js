@@ -32,31 +32,14 @@
 class Board extends React.Component {
 	constructor(props){
 		super(props)
-		// track in state
-			  // boardstate
-			  // current question
-			  // current user defaults to null
-			  // current score
-		this.state ={
-			boardState: false,
-			currentQuestion: null,
-			currentUser: null,
-			showAnswer: false,
-			score: 0
-		}
-		/**
-
-		**/
+		this.selectQuestion = this.selectQuestion.bind(this)
 	}
 
 	selectQuestion(cat, row, value) {
-		console.log('cat: ' + cat);
-		console.log('row: ' + row);
-		console.log('value: ' + value);
+		this.props.selectQuestion(cat, row, value)
 	}
 
 	render() {
-		console.log(this.props.inheritedState);
 		let categories = this.props.inheritedState.categories
 		let questions = this.props.inheritedState.questions
 		let boardState = this.props.inheritedState.boardState
@@ -72,13 +55,12 @@ class Board extends React.Component {
 			let rowData = []
 			let value = 1*200 + row*200
 			for (let cat = 0; cat < questions.length; cat++) {
-				rowData.push((boardState[cat,row]) ? <td onClick={() => this.selectQuestion(cat, row, value)}>{value}</td> : <td></td>)
+				rowData.push((boardState[cat][row]) ? <td onClick={() => this.selectQuestion(cat, row, value)}>{value}</td> : <td></td>)
 			}
 			boardData.push(<tr>{rowData}</tr>)
 		}
 
 		return <div className="container">
-
 			<table>
 				<tr>
 					{categoryData}

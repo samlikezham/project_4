@@ -12,6 +12,7 @@ class Question extends React.Component {
 	}
 
 
+
 //   ###########  FUNCTIONS     ###########
 	togglePromptOn(){
 		this.setState({
@@ -22,6 +23,7 @@ class Question extends React.Component {
 		this.setState({
 			showPrompt: false
 		})
+
 	}
 
 
@@ -33,7 +35,7 @@ class Question extends React.Component {
 			{/* display question */}
 			<div className="questionDisplay">
 				<h1>{this.props.data.question}</h1>
-				<li><strong>Category:</strong> {this.props.data.category.title}</li>
+
 				<li><strong>Value:</strong> {this.props.data.value} </li>
 			</div>
 
@@ -41,6 +43,7 @@ class Question extends React.Component {
 			<div className="answer">
 				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
+
 
 
 			{/*  reveal buttons to declare right, wrong, or didn't answer */}
@@ -63,6 +66,7 @@ class Question extends React.Component {
 				<button onClick={()=>
 				{this.props.queryQuestion(); this.togglePromptOff()}}>
 				Get Next Question</button> : ''}
+
 			</div>
 
 			{/* scorekeeper  //  update scoreboard - function passed in from sidebar */}
@@ -73,12 +77,6 @@ class Question extends React.Component {
 	}
 
 }
-
-
-
-
-
-
 
 
 
