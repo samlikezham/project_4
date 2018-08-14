@@ -1,5 +1,4 @@
 
-//  #########     CONSTRUCTOR     ###########
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
@@ -60,8 +59,6 @@ class Sidebar extends React.Component {
 //    prompt toggle to show
 
 
-
-
 //  ########  FUNCTIONS    ###########
 //  score tracker
 //    pass in value of question
@@ -71,14 +68,6 @@ class Sidebar extends React.Component {
 
 //  prompt toggle
 //    get current value and set to !value
-
-
-
-
-
-
-
-
 
 
 //########     RENDER      ###########

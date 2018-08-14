@@ -1,13 +1,8 @@
-//  #########     CONSTRUCTOR     ###########
-	//  PROPS we expect to receive
-	// question
+
 class Question extends React.Component {
 	constructor(props){
 		super(props);
 	}
-// side bar has score
-// side bar looks at current state to show prompt?
-
 
 	render(){
 		return <div class="questionContainer">
@@ -31,8 +26,8 @@ class Question extends React.Component {
 			{/*  reveal buttons to declare right, wrong, or didn't answer */}
 			{/*  after any of three buttons pressed */}
 			{/*  make call to edit score if right or wrong */}
+			{/*  after point is added/subtracted call to toggle prompt */}
 			<div className="scoreBtns">
-				{/*  after point is added/subtracted call to toggle prompt */}
 					<button onClick={()=>
 					{this.props.addToScore(); this.props.togglePromptOn()}}>
 					Correct!</button>
@@ -42,15 +37,7 @@ class Question extends React.Component {
 					<button onClick={this.props.togglePromptOn}>
 					Did Not Answer</button>
 			</div>
+			
 		</div>
 	}
 }
-
-
-{/* scorekeeper //  toggle prompt - function passed in from sidebar */}
-			// <div className="questionPrompt">
-			// 	{(this.state.showPrompt == true) ?
-			// 	<button onClick={()=>
-			// 	{this.props.queryQuestion(); this.togglePromptOff()}}>
-			// 	Get Next Question</button> : ''}
-			// </div>
