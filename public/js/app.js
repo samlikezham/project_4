@@ -4,6 +4,7 @@ class App extends React.Component {
 	constructor(props){
 		super(props)
 		this.toggleAnswer = this.toggleAnswer.bind(this)
+		this.toggleAnswerOff = this.toggleAnswerOff.bind(this)
 		this.addToScore = this.addToScore.bind(this)
 		this.subtractScore = this.subtractScore.bind(this)
 		this.showBoard = this.showBoard.bind(this)
@@ -85,6 +86,13 @@ class App extends React.Component {
 			showAnswer: !showAnswer
 		})
 	}
+	// turn false if new question is selected
+	toggleAnswerOff(){
+		let showAnswer = this.state.showAnswer
+		this.setState({
+			showAnswer: false
+		})
+	}
 	// score setters
 	addToScore(event){
 		console.log(this.state.currentQuestion)
@@ -149,6 +157,7 @@ class App extends React.Component {
 						addToScore={this.addToScore}
 						subtractScore={this.subtractScore}
 						queryQuestion={this.queryQuestion}
+						toggleAnswerOff={this.toggleAnswerOff}
 					/>
 				</div>
 		</div>

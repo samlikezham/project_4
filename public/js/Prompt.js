@@ -11,7 +11,7 @@ class Prompt extends React.Component {
 				{
 					(this.props.showPrompt) 
 					? 
-					<button onClick={()=> {this.props.queryQuestion(); this.props.togglePromptOff()}}>
+					<button onClick={()=> {this.props.queryQuestion(); this.props.togglePromptOff(); this.props.toggleAnswerOff()}}>
 					Get Next Question
 					</button> : null
 				}

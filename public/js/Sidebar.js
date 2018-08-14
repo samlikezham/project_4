@@ -48,6 +48,7 @@ class Sidebar extends React.Component {
 	        	showPrompt={this.state.showPrompt}
 	        	queryQuestion={this.props.queryQuestion}
 	        	togglePromptOff={this.togglePromptOff}
+	        	toggleAnswerOff={this.props.toggleAnswerOff}
 	        />
         </div>
       </div>
