@@ -12,7 +12,6 @@ class Question extends React.Component {
 	}
 
 
-
 //   ###########  FUNCTIONS     ###########
 	togglePromptOn(){
 		this.setState({
@@ -25,7 +24,8 @@ class Question extends React.Component {
 		})
 
 	}
-
+// side bar has score
+// side bar looks at current state to show prompt?
 
 
 //  ##############   RENDER    ###############
@@ -66,7 +66,6 @@ class Question extends React.Component {
 				<button onClick={()=>
 				{this.props.queryQuestion(); this.togglePromptOff()}}>
 				Get Next Question</button> : ''}
-
 			</div>
 
 			{/* scorekeeper  //  update scoreboard - function passed in from sidebar */}
@@ -75,8 +74,4 @@ class Question extends React.Component {
 			</div>
 		</div>
 	}
-
 }
-
-
-
