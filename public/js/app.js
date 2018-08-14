@@ -9,12 +9,8 @@ class App extends React.Component {
 		this.showBoard = this.showBoard.bind(this)
 		this.queryQuestion = this.queryQuestion.bind(this)
 		this.createBoard = this.createBoard.bind(this)
+		this.selectQuestion = this.selectQuestion.bind(this)
 
-		// track in state
-			  // boardstate
-			  // current question
-			  // current user defaults to null
-			  // current score
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
 			currentQuestion: null, // describes currently selected question
@@ -22,7 +18,9 @@ class App extends React.Component {
 			showAnswer: false, // describes whether answer should be shown in the question class
 			score: 0, // describes the player's score
 			questions: [], // describes the total list of questions
-			categories: [] // describes the categories of the game
+			categories: [], // describes the categories of the game
+			currentValue: 0, // describes value of current question according to our board
+			showQuestion: false // describes whether the question should be shown. if not, show the appropriate prompt
 		}
 	}
 
@@ -39,8 +37,6 @@ class App extends React.Component {
 
 		let catQuestions = []
 
-		// let catQuestions = this.queryCategory(Math.ceil(Math.random() * 18000));
-
 		// for each category, generate a random int and get the questions
 		// also, push an array of true onto boardState
 		// for each question, push question into array
@@ -55,9 +51,6 @@ class App extends React.Component {
 			}
 		}
 		this.setState({boardState: boardState, categories: categories, questions: questions})
-		console.log(boardState);
-		console.log(categories);
-		console.log(questions);
 	}
 
 	queryCategory(catId) {
@@ -117,18 +110,23 @@ class App extends React.Component {
 		})
 	}
 
+	selectQuestion(cat, row, value) {
+		let tempBoardState = this.state.boardState
+		tempBoardState[cat][row] = false
+		this.setState({boardState: tempBoardState, currentValue: value, currentQuestion: this.state.questions[cat][row], showQuestion: true, showAnswer: false})
+	}
+
 
 //   ########    RENDER    ############
 	//  boolean show question - if true - show question if false - show prompt
 	//  prompt toggle to show
 	render(){
-
 		return <div>
 
 				{/* question */}
 				<button onClick={this.queryQuestion}>Question</button>
 					{(this.state.currentQuestion !== null) ?
-					<Question 
+					<Question
 						data={this.state.currentQuestion}
 						toggleAnswer={this.toggleAnswer}
 						addToScore={this.addToScore}
@@ -138,8 +136,7 @@ class App extends React.Component {
 
 				{/* board */}
 				<button onClick={this.queryQuestion}>Prompt to Question</button>
-					{(this.state.currentQuestion !== null) ?
-					<Board inheritedState={this.state} data={this.state.currentQuestion}>
+					{(!!this.state.questions.length) ? <Board inheritedState={this.state} data={this.state.currentQuestion} selectQuestion={this.selectQuestion}>
 					</Board> : null}
 
 
@@ -147,7 +144,7 @@ class App extends React.Component {
 				<div className="answer">
 					{(this.state.showAnswer) ?
 					<li>Answer: {this.state.currentQuestion.answer}</li> : ''}
-					
+
 				</div>
 
 				{/* scorekeeper */}
