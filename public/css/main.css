@@ -25,28 +25,31 @@ header {
   background-repeat: no-repeat;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
 .main_nav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  list-style: none;
-  color: white;
-  font-size: 1.5em;
-  border: 1px solid white;
+  border: 5px solid #c0c0c0;
+  box-shadow: inset 0px 0px 20px 0px rgba(255,255,255,1);
+
+
 }
 .main_nav li {
   float:left;
 }
-li  {
+li , a {
     display: block;
-    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    color: #c0c0c0;
+    font-family: Gyparody, Times, serif;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    list-style: none;
+    letter-spacing: 5px;
 }
 .container {
   display: grid;
