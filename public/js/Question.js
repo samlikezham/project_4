@@ -12,7 +12,7 @@ class Question extends React.Component {
 	}
 
 
-//   ###########  FUNCTIONS     ###########
+//   ###########  FUNCTIONS    ###########
 	togglePromptOn(){
 		this.setState({
 			showPrompt: true
@@ -23,7 +23,8 @@ class Question extends React.Component {
 			showPrompt: false
 		})
 	}
-
+// side bar has score
+// side bar looks at current state to show prompt?
 
 
 //  ##############   RENDER    ###############
@@ -73,12 +74,3 @@ class Question extends React.Component {
 	}
 
 }
-
-
-
-
-
-
-
-
-

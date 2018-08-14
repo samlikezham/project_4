@@ -139,7 +139,6 @@ class App extends React.Component {
 				{/* board */}
 				<button onClick={this.queryQuestion}>Prompt to Question</button>
 					{(this.state.currentQuestion !== null) ?
-
 					<Board inheritedState={this.state} data={this.state.currentQuestion}>
 					</Board> : null}
 
@@ -160,9 +159,7 @@ class App extends React.Component {
 				<div className="sidebar">
 					{(this.state.currentUser !== null) ?
 					 <Sidebar /> : <Auth />}
-
-
-			</div>
+				</div>
 		</div>
 	}
 }
