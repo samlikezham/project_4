@@ -62,7 +62,7 @@ class Board extends React.Component {
 
 		return <div className="container">
 			<table>
-				<tr>
+				<tr className="category_data">
 					{categoryData}
 				</tr>
 				{boardData}
