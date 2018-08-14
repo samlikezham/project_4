@@ -132,7 +132,8 @@ class App extends React.Component {
 						data={this.state.currentQuestion}
 						toggleAnswer={this.toggleAnswer}
 						addToScore={this.addToScore}
-						subtractScore={this.subtractScore} />
+						subtractScore={this.subtractScore}
+						queryQuestion={this.queryQuestion} />
 						: ''}
 
 				{/* board */}
@@ -160,7 +161,8 @@ class App extends React.Component {
 					{(this.state.currentUser !== null) ?
 					 <Sidebar /> : <Auth />}
 
-				</div>
+
+			</div>
 		</div>
 	}
 }
