@@ -11,12 +11,15 @@ RGB */
 :root  {
   --jeopardy-blue: #060CE9;
   --lightest-grey: #e6e6e8;
-
+  --silver: #c0c0c0;
 }
 body {
 background: var(--jeopardy-blue);
 font-family: "OPTIKorinna-Agency Regular", Times, serif;
 color: white;
+}
+.page {
+  box-sizing: border-box;
 }
 header {
   width: 100%;
@@ -29,23 +32,29 @@ header {
 }
 
 .main_nav {
-  margin-top: 5%;
-  padding: 5px;
+  width: 100%;
+  position: fixed;
+  /* left: 0; */
+  bottom: 0;
+  /* margin-top: 5%;
+  padding: 5px; */
   overflow: hidden;
-  border: 5px solid #c0c0c0;
+  border: 5px solid var(--silver);
   box-shadow: inset 0px 0px 20px 0px rgba(255,255,255,1);
-
-
 }
+
 .main_nav li {
-  float:left;
+
+  display: block;
+  text-align: center;
 }
-li , a {
+.main_nav li , a {
+  float:left;
     display: block;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    color: #c0c0c0;
+    color: var(--silver);
     font-family: Gyparody, Times, serif;
     font-size: 1.5em;
     text-shadow: 2px 2px 4px #000000;
@@ -54,13 +63,32 @@ li , a {
     list-style: none;
     letter-spacing: 5px;
 }
+.display {
+  width: 25%;
+  float: right;
+  height: 650px;
+  border: 15px groove var(--silver);
+  color: white;
+  padding: 5px;
+  margin: 2%;
+  font-size: 1.5em;
+  text-align: center;
+  box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
+}
+.display_score {
+  font-size: 2.5em;
+  padding-top: 10px;
+
+
+}
 table {
-  width: 1560px;
-  margin: 0 auto;
+  width: 66%;
+  float: right;
   font-size: 2em;
   border: 3px groove rgba(0,0,0,0.8);
   color: white;
   padding: .8em;
+  background: var(--silver);
   /* border-spacing: 0; */
 
 }
@@ -70,6 +98,7 @@ th {
   border: 3px solid  rgba(0,0,0,0.8);
   box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
   text-transform: uppercase;
+  background: var(--jeopardy-blue);
 }
 td {
   border: 3px solid rgba(0,0,0,0.8);
@@ -80,10 +109,11 @@ td {
   box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
   letter-spacing: 5px;
   font-size: 1.5em;
+  background: var(--jeopardy-blue);
 }
 td:hover {
-  border: 3px solid rgba(255,215,0,1);
-  box-shadow: inset 0px 0px 20px 3px rgba(255,215,0,1);
+  border: 3px solid rgba(235,215,0,1);
+  box-shadow: inset 0px 0px 20px 3px rgba(235,215,0,1);
 }
 
 
@@ -101,25 +131,27 @@ button:hover {
 
 /* ####### display size ######## */
 /* med screens */
-@media all and (max-width: 800px) {
-  .main_nav {
-    justify-content: space-around;
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+  .display {
+    width: 100%
+  }
+  .main_nav a {
+    float: none;
+    width: 100%
   }
 }
 /* small screens */
-@media all and (max-width: 600px) {
-  .main_nav  {
-    flex-wrap: wrap;
+@media screen and (max-width: 400px) {
+  table {
+    width: 100%;
   }
-
-  .main_nav li {
-    flex-basis: 50%;
+  .display {
+    width: 100%
   }
-}
-
-@media all and (max-width: 400px) {
-  .main_nav  li {
-   flex-basis: 100%;
- }
-
+  .main_nav a {
+    display: none;
+  }
 }
