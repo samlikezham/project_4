@@ -123,43 +123,25 @@ class App extends React.Component {
 	render(){
 		return <div>
 
-				{/* question */}
-				<button onClick={this.queryQuestion}>Question</button>
-					{(this.state.currentQuestion !== null) ?
-					<Question
-						data={this.state.currentQuestion}
-						toggleAnswer={this.toggleAnswer}
-						addToScore={this.addToScore}
-						subtractScore={this.subtractScore}
-						queryQuestion={this.queryQuestion} />
-						: ''}
-
 				{/* board */}
-				<button onClick={this.queryQuestion}>Prompt to Question</button>
-
-					{(!!this.state.questions.length) ? <Board inheritedState={this.state} data={this.state.currentQuestion} selectQuestion={this.selectQuestion}>
+				{(!!this.state.questions.length) ? 
+					<Board 
+						inheritedState={this.state} 
+						data={this.state.currentQuestion} 
+						selectQuestion={this.selectQuestion}>
 					</Board> : null}
-			
-
-				{/* toggle answer */}
-				<div className="answer">
-					{(this.state.showAnswer) ?
-					<li>Answer: {this.state.currentQuestion.answer}</li> : ''}
-
-				</div>
-
-				{/* scorekeeper */}
-				<div className="scoreKeeper">
-					<h2>Score: {this.state.score}</h2>
-				</div>
 
 
 				{/* sidebar and auth */}
 				<div className="sidebar">
-			<Sidebar inheritedState={this.state}/>
-
-
-			</div>
+					<Sidebar 
+						inheritedState={this.state}
+						toggleAnswer={this.toggleAnswer}
+						addToScore={this.addToScore}
+						subtractScore={this.subtractScore}
+						queryQuestion={this.queryQuestion}
+					/>
+				</div>
 		</div>
 	}
 }

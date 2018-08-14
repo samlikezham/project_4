@@ -1,3 +1,4 @@
+gemfile
 *.rbc
 capybara-*.html
 .rspec
