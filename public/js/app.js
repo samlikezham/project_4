@@ -124,7 +124,7 @@ class App extends React.Component {
 		return <div>
 
 				{/* board */}
-				<div class="mainContainer"
+				<div class="mainContainer">
 					{(this.state.currentUser)
 						? (!!this.state.questions.length)
 							?
