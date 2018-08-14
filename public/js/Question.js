@@ -22,7 +22,6 @@ class Question extends React.Component {
 		this.setState({
 			showPrompt: false
 		})
-
 	}
 // side bar has score
 // side bar looks at current state to show prompt?
@@ -45,24 +44,23 @@ class Question extends React.Component {
 			</div>
 
 
-
 			{/*  reveal buttons to declare right, wrong, or didn't answer */}
 			{/*  after any of three buttons pressed */}
 			{/*  make call to edit score if right or wrong */}
 			<div className="scoreBtns">
 				{/*  after point is added/subtracted call to toggle prompt */}
-					<button onClick={()=> 
+					<button onClick={()=>
 					{this.props.addToScore(); this.togglePromptOn()}}>
 					Correct!</button>
-					<button onClick={()=> 
+					<button onClick={()=>
 					{this.props.subtractScore(); this.togglePromptOn()}}>
 					Incorrect</button>
 					<button onClick={this.togglePromptOn}>Did Not Answer</button>
-			</div>	
+			</div>
 
 			{/* scorekeeper //  toggle prompt - function passed in from sidebar */}
 			<div className="questionPrompt">
-				{(this.state.showPrompt == true) ? 
+				{(this.state.showPrompt == true) ?
 				<button onClick={()=>
 				{this.props.queryQuestion(); this.togglePromptOff()}}>
 				Get Next Question</button> : ''}
