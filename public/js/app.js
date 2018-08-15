@@ -34,7 +34,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.createBoard()
-   	   	fetch('/api/v1/users.json')
+   	   	fetch('/users')
       	.then((response) => {return response.json()})
       	.then((data) => {this.setState({ users: data }) });
   	}
@@ -144,17 +144,19 @@ class App extends React.Component {
     console.log(username, password)
     event.preventDefault();
     this.updateCurrentUser(username, password)
-    let body = JSON.stringify({user: {username: username, password: password} })
-      fetch('http://localhost:3000/api/v1/users', {
+    let body = JSON.stringify({"username": username, "password": password})
+    console.log(body)
+      fetch('/users', {
         method: 'POST',
         headers: {
+          'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json'
       },
       body: body,
     }).then((response) => {return response.json()})
       .then((user)=>{
         this.addNewUser(user)
-      })
+      }).catch(error => console.log(error))
   	}
 
   	addNewUser(user) {
