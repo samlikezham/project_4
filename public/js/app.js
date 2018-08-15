@@ -89,6 +89,7 @@ class App extends React.Component {
 	}
 	// score setters
 	addToScore(event){
+
 		let newScore = this.state.score + this.state.currentValue
 		this.setState({score: newScore})
 		this.pickAgain()

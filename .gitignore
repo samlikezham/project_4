@@ -1,4 +1,5 @@
 Gemfile
+tmp/pids/server.pid
 *.rbc
 capybara-*.html
 .rspec
