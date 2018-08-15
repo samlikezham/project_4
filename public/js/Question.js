@@ -20,7 +20,7 @@ class Question extends React.Component {
 
 			{/* btn to reveal answer for question */}
 			<div className="answer">
-				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
+				<button className="reveal_btn" onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
 
 
