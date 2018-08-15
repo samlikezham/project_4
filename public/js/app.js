@@ -4,6 +4,7 @@ class App extends React.Component {
 	constructor(props){
 		super(props)
 		this.toggleAnswer = this.toggleAnswer.bind(this)
+		this.toggleAnswerOff = this.toggleAnswerOff.bind(this)
 		this.addToScore = this.addToScore.bind(this)
 		this.subtractScore = this.subtractScore.bind(this)
 		this.showBoard = this.showBoard.bind(this)
@@ -11,6 +12,10 @@ class App extends React.Component {
 		this.createBoard = this.createBoard.bind(this)
 		this.selectQuestion = this.selectQuestion.bind(this)
 		this.pickAgain = this.pickAgain.bind(this)
+		this.updateCurrentUser = this.updateCurrentUser.bind(this)
+		this.signOut = this.signOut.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
+    	this.addNewUser = this.addNewUser.bind(this)
 
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
@@ -21,13 +26,18 @@ class App extends React.Component {
 			questions: [], // describes the total list of questions
 			categories: [], // describes the categories of the game
 			currentValue: 0, // describes value of current question according to our board
-			showQuestion: false // describes whether the question should be shown. if not, show the appropriate prompt
+			showQuestion: false, // describes whether the question should be shown. if not, show the appropriate prompt
+			users: []
 		}
 	}
 
 	componentDidMount() {
 		this.createBoard()
-	}
+   	   	fetch('/users')
+      	.then((response) => {return response.json()})
+      	.then((data) => {this.setState({ users: data }) });
+  	}
+
 
 	// have to do the async thing along with the stuff in queryCategory so we wait for catQuestions to be set before moving on.
 	async createBoard() {
@@ -77,13 +87,17 @@ class App extends React.Component {
 	}
 
 
-// 	#########   FUNCTIONS   ############
-	// setters for everything
-		// answer toggle to show
 	toggleAnswer(event){
 		let showAnswer = this.state.showAnswer
 		this.setState({
 			showAnswer: !showAnswer
+		})
+	}
+	// turn false if new question is selected
+	toggleAnswerOff(){
+		let showAnswer = this.state.showAnswer
+		this.setState({
+			showAnswer: false
 		})
 	}
 	// score setters
@@ -110,10 +124,45 @@ class App extends React.Component {
 		})
 	}
 
-	// current user
-	currentUser(){
+	// update current user/password
+	updateCurrentUser(username, password){
 		this.setState({
-			currentUser: true
+			currentUser:
+				username,
+				password
+		})
+	}
+
+	handleSubmit(username, password) {
+    console.log(username, password)
+    event.preventDefault();
+    this.updateCurrentUser(username, password)
+    let body = JSON.stringify({"username": username, "password": password})
+    console.log(body)
+      fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+      },
+      body: body,
+    }).then((response) => {return response.json()})
+      .then((user)=>{
+        this.addNewUser(user)
+      }).catch(error => console.log(error))
+  	}
+
+  	addNewUser(user) {
+    this.setState({
+      users: this.state.users.concat(user)
+    })
+  	}
+
+
+	// sign out
+	signOut() {
+		this.setState({
+			currentUser: null
 		})
 	}
 
@@ -123,26 +172,30 @@ class App extends React.Component {
 		this.setState({boardState: tempBoardState, currentValue: value, currentQuestion: this.state.questions[cat][row], showQuestion: true, showAnswer: false})
 	}
 
-//   ########    RENDER    ############
-	//  boolean show question - if true - show question if false - show prompt
-	//  prompt toggle to show
 	render(){
 		return <div>
-
 				{/* board */}
 				<div class="mainContainer">
 					{(this.state.currentUser)
 						? (!!this.state.questions.length)
 							?
+							[
+								<Greeting 
+									username={this.state.currentUser}
+									signOut={this.signOut}
+								/>,
 								<Board
 									inheritedState={this.state}
 									data={this.state.currentQuestion}
 									selectQuestion={this.selectQuestion}>
 								</Board>
+							]
 							:
 								null
 						:
-							<Auth/>
+							<Auth
+								handleSubmit={this.handleSubmit}
+							/>
 					}
 				</div>
 
@@ -155,6 +208,7 @@ class App extends React.Component {
 						addToScore={this.addToScore}
 						subtractScore={this.subtractScore}
 						pickAgain={this.pickAgain}
+						users={this.state.users}
 					/>
 				</div>
 		</div>

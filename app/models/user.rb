@@ -1,4 +1,5 @@
 class User
+<<<<<<< HEAD
 	if(ENV['DATABASE_URL'])
 			 uri = URI.parse(ENV['DATABASE_URL'])
 			 puts "using env database"
@@ -9,6 +10,10 @@ class User
 			 puts "not using env database"
 	end
 
+=======
+
+	DB = PG.connect({:host => "localhost", :port => 5432, :dbname => 'jeopardy_development'})
+>>>>>>> b68c805396f3395c7e69e7c32c039017909be105
 
 	def self.all
 		results = DB.exec("SELECT * FROM users;")
@@ -56,7 +61,11 @@ class User
 		results = DB.exec(
 			<<-SQL
 				UPDATE users
+<<<<<<< HEAD
 				SET username='#{opts["username"]}',
+=======
+				SET username='#{opts["username"]}', 
+>>>>>>> b68c805396f3395c7e69e7c32c039017909be105
 					password='#{opts["password"]}'
 				WHERE id=#{id}
 				RETURNING id, username, password
@@ -71,3 +80,9 @@ class User
 		}
 	end
 end
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> b68c805396f3395c7e69e7c32c039017909be105
