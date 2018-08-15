@@ -8,7 +8,6 @@ class Answer extends React.Component {
           {this.props.addToScore()
             const score = document.querySelector('#score')
         		score.className = score.className + ' score_increase'
-            console.log(score);
             }}>
           Correct!</button>
           <button onClick={()=>

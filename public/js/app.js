@@ -102,9 +102,12 @@ class App extends React.Component {
 
 	pickAgain() {
 
-		let isOver = this.state.boardState.map((arr) => (arr.reduce((total, current) => (!!total || !!current)))).reduce((total, current) => (!!total || !!current))
-
+		let isOver = !this.state.boardState.map((arr) => (arr.reduce((total, current) => (!!total || !!current)))).reduce((total, current) => (!!total || !!current))
+		console.log(isOver);
 		this.setState({showQuestion:false, showAnswer:false, gameOver:isOver})
+		if (isOver) {
+			this.gameEnd()
+		}
 	}
 
 	// board setter
@@ -125,6 +128,16 @@ class App extends React.Component {
 		let tempBoardState = this.state.boardState
 		tempBoardState[cat][row] = false
 		this.setState({boardState: tempBoardState, currentValue: value, currentQuestion: this.state.questions[cat][row], showQuestion: true, showAnswer: false})
+	}
+
+	gameEnd() {
+		//fetch high score
+		//if high score < this.state.score {
+		//	display that the player got a high score
+		//	put the new high score in the database
+		//	store the fact that there's a new high score
+		//}
+	}
 	}
 
 //   ########    RENDER    ############
