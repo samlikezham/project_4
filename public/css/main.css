@@ -1,21 +1,18 @@
-/* Jeopardy title font --- fontfamily Gyparody Regular */
-/* Category font --- OPTIKorinna-Agency Regular (add Bold) */
-
-/* Jeopardy Blue
-
-060CE9
-HEX
-6,12,233
-RGB */
-
 :root  {
   --jeopardy-blue: #060CE9;
   --lightest-grey: #e6e6e8;
-
+  --silver: #c0c0c0;
+  --yellow-highlight: rgba(235,215,0,1);
 }
 body {
-/* background: var(--jeopardy-blue); */
-font-family: "OPTIKorinna-Agency Regular", Times, serif;
+  background: rgba(6, 12, 233, 0.8);
+  font-family: "OPTIKorinna-Agency Regular", Times, serif;
+  color: white;
+  padding-bottom:60px;
+}
+.page {
+  min-height:100%;
+     position:relative;
 }
 header {
   width: 100%;
@@ -23,52 +20,134 @@ header {
   text-align: center;
   background-position: top;
   background-repeat: no-repeat;
+  padding: 10px;
+  margin: 0 auto;
 }
-footer {
-  display: flex;
-
-}
-footer li {
-    list-style: none;
-    flex: 1;
-
-}
-a {
-  list-style: none;
-  text-decoration: none;
-
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar {
+    background-color: var(--silver);
+    color: black;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-/* sidebar.js */
-.scorekeeper {
-  width: 33.3%;
-  display: block;
-  font-family: "OPTIKorinna-Agency Regular", Times, serif;
-  color: var(--lightest-grey)
+/* Style the links inside the navigation bar */
+.navbar a {
+    float: left;
+    display: block;
+    color: rgba(0,0,0,0.8);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    text-transform: uppercase;
 }
-.score_btn {
-  display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.6em 0;
-  border-radius: 2em;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+/* Change the color of links on hover */
+.navbar a:hover {
+    background-color: var(--jeopardy-blue);
+    color: #f2f2f2;
 }
-.score_btn:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+.display {
+  background: var(--jeopardy-blue);
+  width: 25%;
+  float: right;
+  height: 650px;
+  border: 5px groove var(--silver);
+  color: white;
+  padding: 15px;
+  margin: 2%;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px #000000;
+  text-align: center;
+  box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
 }
-/* Prompt.js */
-.prompt{
-  display: inline-block;
-  padding: 0.3em 1.2em;
-  font-weight: bold;
+.display_score {
+  font-size: 2.5em;
+  padding-top: 10px;
+  text-shadow: 2px 2px 4px #000000;
+/* add transition */
 }
+
+.score_increase {
+  /* transition-duration: color 0.5s;
+  color: rgba(235,215,0,1); */
+
+}
+table {
+  width: 66%;
+  float: right;
+  font-size: 2em;
+  color: white;
+  padding: .8em;
+  background: rgba(0,0,0,0.3);
+  padding-bottom:60px;
+
+}
+th {
+  width: 250px;
+  height: 200px;
+  border: 3px solid  rgba(0,0,0,0.8);
+  box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px #000000;
+  padding: 0 5px;
+  background: var(--jeopardy-blue);
+}
+td {
+  border: 3px solid rgba(0,0,0,0.8);
+  width: 250px;
+  height: 200px;
+  text-align: center;
+  box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: 5px;
+  font-size: 1.5em;
+  background: var(--jeopardy-blue);
+}
+td:hover {
+  border: 3px solid rgba(235,215,0,1);
+  box-shadow: inset 0px 0px 20px 3px rgba(235,215,0,1);
+}
+
+
 button {
   display: inline-block;
   padding: 0.3em 1.2em;
   margin: 0 0.6em 0;
   border-radius: 2em;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-size: 0.8em;
 }
 button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/* ####### display size ######## */
+/* med screens */
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+  .display {
+    width: 100%
+  }
+ .main-nav {
+flex-wrap: wrap;
+  }
+
+}
+/* small screens */
+@media screen and (max-width: 400px) {
+  table {
+    width: 100%;
+  }
+  .display {
+    width: 100%
+  }
+  .main-nav li {
+    flex-basis: 100%;
+  }
 }
