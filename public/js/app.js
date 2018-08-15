@@ -133,10 +133,10 @@ class App extends React.Component {
 	}
 
 	handleSubmit(username, password) {
-    console.log()
+    console.log(username, password)
     event.preventDefault();
+    this.updateCurrentUser(username, password)
     let body = JSON.stringify({user: {username: username, password: password} })
-    this.props.onLogin(username, password)
       fetch('http://localhost:3000/api/v1/users', {
         method: 'POST',
         headers: {
@@ -151,7 +151,7 @@ class App extends React.Component {
 
   	addNewUser(user) {
     this.setState({
-      users: this.state.users.concat(users)
+      users: this.state.users.concat(user)
     })
   	}
 
@@ -191,7 +191,6 @@ class App extends React.Component {
 								null
 						:
 							<Auth
-								onLogin={this.updateCurrentUser}
 								handleSubmit={this.handleSubmit}
 							/>
 					}

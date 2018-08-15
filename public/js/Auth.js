@@ -22,13 +22,13 @@ class Auth extends React.Component {
           <div>
             <input åå
               className='input'
-              ref={passwordInput => formFields.description = passwordInput}
+              ref={passwordInput => formFields.password = passwordInput}
               type='password'
               id='password' />
           </div>
             <input className='button is-primary' 
               onClick={()=> 
-                this.handleSubmit(formFields.username.value, formFields.password.value)}
+                this.props.handleSubmit(formFields.username.value, formFields.password.value)}
             type='submit' value="Create Account"/>
         </form>
       </div>
