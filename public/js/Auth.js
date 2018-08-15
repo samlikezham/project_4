@@ -12,6 +12,7 @@ class Auth extends React.Component {
     let password = this.refs.passwordInput.value
     this.props.onLogin(username, password)
   }
+
   render() {
     return(
       <div className='field'>
@@ -37,7 +38,7 @@ class Auth extends React.Component {
         </form>
       </div>
     )
-  }
+    }
 }
 //PROPS
 //  username

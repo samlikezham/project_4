@@ -3,7 +3,7 @@ class Greeting extends React.Component {
 		return( 
 			<div className="greetingContainer">
 			<h3>Welcome, {this.props.username}!</h3>
-			<a href="#action" onClick={()=> {
+			<a href="javascript:;" onClick={()=> {
 					this.props.signOut()}}>Sign Out</a>
 			</div>
 		)

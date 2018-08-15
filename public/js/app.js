@@ -24,7 +24,8 @@ class App extends React.Component {
 			questions: [], // describes the total list of questions
 			categories: [], // describes the categories of the game
 			currentValue: 0, // describes value of current question according to our board
-			showQuestion: false // describes whether the question should be shown. if not, show the appropriate prompt
+			showQuestion: false, // describes whether the question should be shown. if not, show the appropriate prompt
+			userData: []
 		}
 	}
 
@@ -108,7 +109,7 @@ class App extends React.Component {
 	pickAgain() {
 		this.setState({showQuestion:false, showAnswer:false})
 	}
-	
+
 	// board setter
 	showBoard(){
 		this.setState({
@@ -141,7 +142,7 @@ class App extends React.Component {
 
 	render(){
 		return <div>
-
+			<Userlist />
 				{/* board */}
 				<div class="mainContainer">
 					{(this.state.currentUser)
