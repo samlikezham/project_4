@@ -131,7 +131,7 @@ class App extends React.Component {
 	//  boolean show question - if true - show question if false - show prompt
 	//  prompt toggle to show
 	render(){
-		return <div>
+		return <div class="appContainer">
 
 				{/* board */}
 				<div class="mainContainer">
@@ -152,7 +152,7 @@ class App extends React.Component {
 
 
 				{/* sidebar and auth */}
-				<div className="sidebar">
+				<div class="sidebar">
 					<Sidebar
 						inheritedState={this.state}
 						toggleAnswer={this.toggleAnswer}

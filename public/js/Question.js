@@ -14,14 +14,12 @@ class Question extends React.Component {
 			{/* display question */}
 			<div className="questionDisplay">
 				<h1>{this.props.inheritedState.currentQuestion.question}</h1>
-
-				<li><strong>Value:</strong> {this.props.inheritedState.currentValue} </li>
 			</div>
 
 			{/* btn to reveal answer for question */}
-			<div className="answer">
+			{(this.props.inheritedState.showAnswer)? null : <div className="answer">
 				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
-			</div>
+			</div>}
 
 
 			{/*  reveal buttons to declare right, wrong, or didn't answer */}
