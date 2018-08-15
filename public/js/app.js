@@ -66,7 +66,7 @@ class App extends React.Component {
 
 	queryCategory(catId) {
 		return new Promise((resolve, reject) => {
-			let urlString = "http://jservice.io/api/category?id=" + catId
+			let urlString = "https://jservice.io/api/category?id=" + catId
 			fetch(urlString).then(response => {
 				response.json().then(data => {
 					resolve(data);
@@ -180,7 +180,7 @@ class App extends React.Component {
 						? (!!this.state.questions.length)
 							?
 							[
-								<Greeting 
+								<Greeting
 									username={this.state.currentUser}
 									signOut={this.signOut}
 								/>,
