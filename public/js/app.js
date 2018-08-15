@@ -12,11 +12,13 @@ class App extends React.Component {
 		this.createBoard = this.createBoard.bind(this)
 		this.selectQuestion = this.selectQuestion.bind(this)
 		this.pickAgain = this.pickAgain.bind(this)
+		this.updateCurrentUser = this.updateCurrentUser.bind(this)
+		this.signOut = this.signOut.bind(this)
 
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
 			currentQuestion: null, // describes currently selected question
-			currentUser: "bob", // describes current user
+			currentUser: null, // describes current user
 			showAnswer: false, // describes whether answer should be shown in the question class
 			score: 0, // describes the player's score
 			questions: [], // describes the total list of questions
@@ -78,9 +80,6 @@ class App extends React.Component {
 	}
 
 
-// 	#########   FUNCTIONS   ############
-	// setters for everything
-		// answer toggle to show
 	toggleAnswer(event){
 		let showAnswer = this.state.showAnswer
 		this.setState({
@@ -117,10 +116,19 @@ class App extends React.Component {
 		})
 	}
 
-	// current user
-	currentUser(){
+	// update current user/password
+	updateCurrentUser(username, password){
 		this.setState({
-			currentUser: true
+			currentUser: 
+				username,
+				password
+		})
+		console.log(this)
+	}
+	// sign out
+	signOut() {
+		this.setState({
+			currentUser: null
 		})
 	}
 
@@ -130,9 +138,6 @@ class App extends React.Component {
 		this.setState({boardState: tempBoardState, currentValue: value, currentQuestion: this.state.questions[cat][row], showQuestion: true, showAnswer: false})
 	}
 
-//   ########    RENDER    ############
-	//  boolean show question - if true - show question if false - show prompt
-	//  prompt toggle to show
 	render(){
 		return <div>
 
@@ -141,15 +146,23 @@ class App extends React.Component {
 					{(this.state.currentUser)
 						? (!!this.state.questions.length)
 							?
+							[
+								<Greeting 
+									username={this.state.currentUser}
+									signOut={this.signOut}
+								/>,
 								<Board
 									inheritedState={this.state}
 									data={this.state.currentQuestion}
 									selectQuestion={this.selectQuestion}>
 								</Board>
+							]
 							:
 								null
 						:
-							<Auth/>
+							<Auth
+								onLogin={this.updateCurrentUser}
+							/>
 					}
 				</div>
 
