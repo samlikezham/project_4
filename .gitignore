@@ -1,5 +1,5 @@
 tmp/pids/server.pid
-Gemfile
+
 *.rbc
 capybara-*.html
 .rspec
