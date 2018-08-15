@@ -185,12 +185,11 @@ class App extends React.Component {
 		//	store the fact that there's a new high score
 		//}
 	}
-	}
 
 //   ########    RENDER    ############
 	//  boolean show question - if true - show question if false - show prompt
 	//  prompt toggle to show
-	render(){
+	render() {
 		return <div class="appContainer">
 
 				{/* board */}
