@@ -1,26 +1,15 @@
-/* Jeopardy title font --- fontfamily Gyparody Regular */
-/* Category font --- OPTIKorinna-Agency Regular (add Bold) */
-
-/* Jeopardy Blue
-
-060CE9
-HEX
-6,12,233
-RGB */
-
 :root  {
   --jeopardy-blue: #060CE9;
   --lightest-grey: #e6e6e8;
   --silver: #c0c0c0;
+  --yellow-highlight: rgba(235,215,0,1);
 }
 body {
 background: var(--jeopardy-blue);
 font-family: "OPTIKorinna-Agency Regular", Times, serif;
 color: white;
 }
-.page {
-  box-sizing: border-box;
-}
+
 header {
   width: 100%;
   height: 200px;
@@ -30,26 +19,23 @@ header {
   padding: 10px;
   margin: 0 auto;
 }
-
-.main_nav {
+ .main_nav {
   width: 100%;
   position: fixed;
-  /* left: 0; */
   bottom: 0;
-  /* margin-top: 5%;
-  padding: 5px; */
+  margin-top: 5%;
+  padding: 5px;
   overflow: hidden;
-  border: 5px solid var(--silver);
+  border: 5px groove var(--silver);
   box-shadow: inset 0px 0px 20px 0px rgba(255,255,255,1);
 }
 
 .main_nav li {
-
   display: block;
   text-align: center;
 }
 .main_nav li , a {
-  float:left;
+    float:left;
     display: block;
     text-align: center;
     padding: 14px 16px;
@@ -58,34 +44,51 @@ header {
     font-family: Gyparody, Times, serif;
     font-size: 1.5em;
     text-shadow: 2px 2px 4px #000000;
-    font-size: 1.5em;
     text-transform: uppercase;
     list-style: none;
     letter-spacing: 5px;
 }
+
+.main_nav a {
+  color: var(--silver);
+  font-family: Gyparody, Times, serif;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px #000000;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+
 .display {
   width: 25%;
   float: right;
   height: 650px;
-  border: 15px groove var(--silver);
+  border: 5px groove var(--silver);
   color: white;
   padding: 5px;
   margin: 2%;
   font-size: 1.5em;
+  text-shadow: 2px 2px 4px #000000;
   text-align: center;
   box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
 }
 .display_score {
   font-size: 2.5em;
   padding-top: 10px;
+  text-shadow: 2px 2px 4px #000000;
+/* add transition */
+}
 
+.score_increase {
+  /* transition-duration: color 0.5s;
+  color: rgba(235,215,0,1); */
 
 }
 table {
   width: 66%;
   float: right;
   font-size: 2em;
-  border: 3px groove rgba(0,0,0,0.8);
   color: white;
   padding: .8em;
   background: var(--silver);
@@ -98,15 +101,17 @@ th {
   border: 3px solid  rgba(0,0,0,0.8);
   box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
   text-transform: uppercase;
+  text-shadow: 2px 2px 4px #000000;
+  padding: 0 5px;
   background: var(--jeopardy-blue);
 }
 td {
   border: 3px solid rgba(0,0,0,0.8);
-  /* box-sizing: border-box; */
   width: 250px;
   height: 200px;
   text-align: center;
   box-shadow: inset 0px 0px 20px 3px rgba(255,255,255,1);
+  text-shadow: 2px 2px 4px #000000;
   letter-spacing: 5px;
   font-size: 1.5em;
   background: var(--jeopardy-blue);
@@ -138,10 +143,12 @@ button:hover {
   .display {
     width: 100%
   }
-  .main_nav a {
-    float: none;
-    width: 100%
+ .main_nav {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
   }
+
 }
 /* small screens */
 @media screen and (max-width: 400px) {
