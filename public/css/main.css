@@ -72,17 +72,9 @@ header {
   font-size: 2.5em;
   padding-top: 10px;
   text-shadow: 2px 2px 4px #000000;
-/* add transition */
+  transition:
 }
 
-.score_increase {
-  /* transition-duration: color 0.5s;
-  color: rgba(235,215,0,1); */
-  /* transition-property: width;
-    transition-duration: 2s;
-    transition-timing-function: linear;
-    transition-delay: 1s; */
-}
 table {
   width: 66%;
   float: right;
