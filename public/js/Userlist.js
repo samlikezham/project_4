@@ -1,9 +1,6 @@
 class Userlist extends React.Component {
 	constructor(props) {
     super(props);
-    this.state = {
-      users: []
-    };
   }
   componentDidMount(){
     fetch('/api/v1/users.json')

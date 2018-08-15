@@ -2,18 +2,10 @@
 //id SERIAL, username VARCHAR(20), password VARCHAR(20)
 
 class Auth extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    let username = this.refs.usernameInput.value
-    let password = this.refs.passwordInput.value
-    this.props.onLogin(username, password)
-  }
 
   render() {
+
+    let formFields = {}
     return(
       <div className='field'>
         <form onSubmit={this.handleSubmit}>
@@ -22,7 +14,7 @@ class Auth extends React.Component {
           <div>
             <input 
               className='input'
-              ref="usernameInput"
+              ref={usernameInput => formFields.username = usernameInput}
               type='text'
               id='username' />
           </div>
@@ -30,11 +22,14 @@ class Auth extends React.Component {
           <div>
             <input åå
               className='input'
-              ref="passwordInput"
+              ref={passwordInput => formFields.description = passwordInput}
               type='password'
               id='password' />
           </div>
-            <input className='button is-primary' type='submit' value="Create Account"/>
+            <input className='button is-primary' 
+              onClick={()=> 
+                this.handleSubmit(formFields.username.value, formFields.password.value)}
+            type='submit' value="Create Account"/>
         </form>
       </div>
     )

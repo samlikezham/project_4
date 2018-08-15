@@ -14,6 +14,8 @@ class App extends React.Component {
 		this.pickAgain = this.pickAgain.bind(this)
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.signOut = this.signOut.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
+    	this.addNewUser = this.addNewUser.bind(this)
 
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
@@ -25,13 +27,17 @@ class App extends React.Component {
 			categories: [], // describes the categories of the game
 			currentValue: 0, // describes value of current question according to our board
 			showQuestion: false, // describes whether the question should be shown. if not, show the appropriate prompt
-			userData: []
+			users: []
 		}
 	}
 
 	componentDidMount() {
 		this.createBoard()
-	}
+   	   	fetch('/api/v1/users.json')
+      	.then((response) => {return response.json()})
+      	.then((data) => {this.setState({ users: data }) });
+  	}
+
 
 	// have to do the async thing along with the stuff in queryCategory so we wait for catQuestions to be set before moving on.
 	async createBoard() {
@@ -118,15 +124,38 @@ class App extends React.Component {
 	}
 
 	// update current user/password
-	updateCurrentUser(username, password, highScore){
+	updateCurrentUser(username, password){
 		this.setState({
 			currentUser:
 				username,
-				password,
-				highScore
+				password
 		})
-		console.log(this)
 	}
+
+	handleSubmit(username, password) {
+    console.log()
+    event.preventDefault();
+    let body = JSON.stringify({user: {username: username, password: password} })
+    this.props.onLogin(username, password)
+      fetch('http://localhost:3000/api/v1/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+      },
+      body: body,
+    }).then((response) => {return response.json()})
+      .then((user)=>{
+        this.addNewUser(user)
+      })
+  	}
+
+  	addNewUser(user) {
+    this.setState({
+      users: this.state.users.concat(users)
+    })
+  	}
+
+
 	// sign out
 	signOut() {
 		this.setState({
@@ -142,7 +171,6 @@ class App extends React.Component {
 
 	render(){
 		return <div>
-			<Userlist />
 				{/* board */}
 				<div class="mainContainer">
 					{(this.state.currentUser)
@@ -164,6 +192,7 @@ class App extends React.Component {
 						:
 							<Auth
 								onLogin={this.updateCurrentUser}
+								handleSubmit={this.handleSubmit}
 							/>
 					}
 				</div>
@@ -177,6 +206,7 @@ class App extends React.Component {
 						addToScore={this.addToScore}
 						subtractScore={this.subtractScore}
 						pickAgain={this.pickAgain}
+						users={this.state.users}
 					/>
 				</div>
 		</div>

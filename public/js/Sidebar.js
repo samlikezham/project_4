@@ -2,7 +2,7 @@
 class Sidebar extends React.Component {
   constructor(props) {
     super(props)
-    	this.togglePromptOn = this.togglePromptOn.bind(this)
+    this.togglePromptOn = this.togglePromptOn.bind(this)
 		this.togglePromptOff = this.togglePromptOff.bind(this)
 		this.state = {
 			showPrompt: false
@@ -13,14 +13,27 @@ class Sidebar extends React.Component {
 		this.setState({
 			showPrompt: true
 		})
-	}
-	togglePromptOff(){
+	  }
+
+	  togglePromptOff(){
 		this.setState({
 			showPrompt: false
 		})
-	}
+	  }
 
   render() {
+
+    let users = this.props.inheritedState.users.map((user) => {
+      return(
+        <div key={user.id}>
+          <p>username: {user.username}</p>
+          <p>password: {user.password}</p>
+          <p>highest score: {user.high_score}</p>
+        </div>
+      )
+    })
+
+
     let inheritedState = this.props.inheritedState
     return(
       <div className="display">
@@ -37,6 +50,9 @@ class Sidebar extends React.Component {
 	        addToScore={this.props.addToScore}
 	        subtractScore={this.props.subtractScore}
         /> : null}
+        <div>
+        {users}
+        </div>
       </div>
     )
   }
