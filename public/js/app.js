@@ -21,7 +21,8 @@ class App extends React.Component {
 			questions: [], // describes the total list of questions
 			categories: [], // describes the categories of the game
 			currentValue: 0, // describes value of current question according to our board
-			showQuestion: false // describes whether the question should be shown. if not, show the appropriate prompt
+			showQuestion: false, // describes whether the question should be shown. if not, show the appropriate prompt
+			gameOver: false
 		}
 	}
 
@@ -99,7 +100,10 @@ class App extends React.Component {
 	}
 
 	pickAgain() {
-		this.setState({showQuestion:false, showAnswer:false})
+
+		let isOver = this.state.boardState.map((arr) => (arr.reduce((total, current) => (!!total || !!current)))).reduce((total, current) => (!!total || !!current))
+
+		this.setState({showQuestion:false, showAnswer:false, gameOver:isOver})
 	}
 
 	// board setter

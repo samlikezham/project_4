@@ -6,8 +6,6 @@ class Sidebar extends React.Component {
 
   }
   render() {
-    console.log(this.props.inheritedState);
-    console.log(this.props.inheritedState.showAnswer);
     let inheritedState = this.props.inheritedState
     return(
       <div className="display">
