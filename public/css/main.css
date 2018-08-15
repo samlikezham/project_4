@@ -5,7 +5,7 @@
   --yellow-highlight: rgba(235,215,0,1);
 }
 body {
-background: var(--jeopardy-blue);
+background: rgba(6, 12, 233, 0.8);
 font-family: "OPTIKorinna-Agency Regular", Times, serif;
 color: white;
 }
@@ -61,12 +61,13 @@ header {
 
 
 .display {
+  background: var(--jeopardy-blue);
   width: 25%;
   float: right;
   height: 650px;
   border: 5px groove var(--silver);
   color: white;
-  padding: 5px;
+  padding: 15px;
   margin: 2%;
   font-size: 1.5em;
   text-shadow: 2px 2px 4px #000000;
@@ -91,7 +92,7 @@ table {
   font-size: 2em;
   color: white;
   padding: .8em;
-  background: var(--silver);
+  background: rgba(0,0,0,0.3);
   /* border-spacing: 0; */
 
 }
