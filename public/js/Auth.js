@@ -14,18 +14,19 @@ class Auth extends React.Component {
   }
   render() {
     return(
+      <div className='login'>
       <div className='field'>
         <form onSubmit={this.handleSubmit}>
           <label className='label' for='username'>Username</label>
           <div>
-            <input className='input' type='text' id='username' />
+            <input className='input' type='text' id='username' placeholder='Username'/>
           </div>
-          <label className='label' for='password'>Password</label>
           <div>
-            <input className='input' type='text' id='password' />
+            <input className='input' type='text' id='password' placeholder='password' />
           </div>
-            <input className='button is-primary' type='submit' />
+            <input className='submit_login' type='submit' />
         </form>
+      </div>
       </div>
     )
   }

@@ -15,7 +15,7 @@ class App extends React.Component {
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
 			currentQuestion: null, // describes currently selected question
-			currentUser: "bob", // describes current user
+			currentUser: null, // describes current user
 			showAnswer: false, // describes whether answer should be shown in the question class
 			score: 0, // describes the player's score
 			questions: [], // describes the total list of questions
