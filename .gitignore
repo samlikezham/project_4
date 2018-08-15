@@ -1,3 +1,4 @@
+tmp/pids/server.pid
 Gemfile
 tmp/pids/server.pid
 *.rbc

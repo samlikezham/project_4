@@ -1,7 +1,6 @@
-
-class Prompt extends React.Component {
 // ############   RENDER     ###############
 	// prompt to pick another question
+class Prompt extends React.Component {
 	render() {
 		return(
 			<div className="container">
@@ -9,5 +8,4 @@ class Prompt extends React.Component {
 			</div>
 		)
 	}
-
 }

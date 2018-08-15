@@ -2,48 +2,39 @@
 //id SERIAL, username VARCHAR(20), password VARCHAR(20)
 
 class Auth extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      username: ''
-    }
-  }
-  handleSubmit (event) {
-    event.preventDefault()
-    this.props.handleSubmit(this.state)
-  }
+
   render() {
+
+    let formFields = {}
     return(
       <div className='field'>
         <h2>Log In</h2>
         <form onSubmit={this.handleSubmit}>
-          <label className='label' for='login_username'>Username</label>
+        <h3>Create Account</h3>
+          <label className='label' for='username'>Username</label>
           <div>
-            <input className='input' type='text' id='login_username' />
+            <input
+              className='input'
+              ref={usernameInput => formFields.username = usernameInput}
+              type='text'
+              id='username' />
           </div>
           <label className='label' for='login_password'>Password</label>
           <div>
-            <input className='input' type='text' id='login_password' />
+            <input åå
+              className='input'
+              ref={passwordInput => formFields.password = passwordInput}
+              type='password'
+              id='password' />
           </div>
-            <input className='button is-primary' type='submit' />
-        </form>
-        <br/>
-        <br/>
-        <h2>Create Account</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label className='label' for='create_username'>Username</label>
-          <div>
-            <input className='input' type='text' id='create_username' />
-          </div>
-          <label className='label' for='create_password'>Password</label>
-          <div>
-            <input className='input' type='text' id='create_password' />
-          </div>
-            <input className='button is-primary' type='submit' />
+            <input className='button is-primary'
+              onClick={()=>
+                this.props.handleSubmit(formFields.username.value, formFields.password.value)}
+            type='submit' value="Create Account"/>
         </form>
       </div>
     )
-  }
+    }
 }
 //PROPS
 //  username
