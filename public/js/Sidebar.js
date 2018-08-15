@@ -27,7 +27,6 @@ class Sidebar extends React.Component {
       return(
         <div key={user.id}>
           <p>username: {user.username}</p>
-          <p>password: {user.password}</p>
           <p>highest score: {user.high_score}</p>
         </div>
       )

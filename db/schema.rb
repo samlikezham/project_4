@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2018_08_15_145755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "player_data", id: false, force: :cascade do |t|
-    t.serial "id", null: false
-    t.string "username", limit: 25
-    t.string "password", limit: 100
-    t.integer "high_score"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
