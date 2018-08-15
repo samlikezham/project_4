@@ -108,7 +108,7 @@ class App extends React.Component {
 	pickAgain() {
 		this.setState({showQuestion:false, showAnswer:false})
 	}
-
+	
 	// board setter
 	showBoard(){
 		this.setState({
@@ -117,11 +117,12 @@ class App extends React.Component {
 	}
 
 	// update current user/password
-	updateCurrentUser(username, password){
+	updateCurrentUser(username, password, highScore){
 		this.setState({
-			currentUser: 
+			currentUser:
 				username,
-				password
+				password,
+				highScore
 		})
 		console.log(this)
 	}
