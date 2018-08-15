@@ -2,33 +2,38 @@
 //id SERIAL, username VARCHAR(20), password VARCHAR(20)
 
 class Auth extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      username: ''
-    }
-  }
-  handleSubmit (event) {
-    event.preventDefault()
-    this.props.handleSubmit(this.state)
-  }
+
   render() {
+
+    let formFields = {}
     return(
       <div className='field'>
         <form onSubmit={this.handleSubmit}>
+        <h3>Create Account</h3>
           <label className='label' for='username'>Username</label>
           <div>
-            <input className='input' type='text' id='username' />
+            <input 
+              className='input'
+              ref={usernameInput => formFields.username = usernameInput}
+              type='text'
+              id='username' />
           </div>
           <label className='label' for='password'>Password</label>
           <div>
-            <input className='input' type='text' id='password' />
+            <input åå
+              className='input'
+              ref={passwordInput => formFields.password = passwordInput}
+              type='password'
+              id='password' />
           </div>
-            <input className='button is-primary' type='submit' />
+            <input className='button is-primary' 
+              onClick={()=> 
+                this.props.handleSubmit(formFields.username.value, formFields.password.value)}
+            type='submit' value="Create Account"/>
         </form>
       </div>
     )
-  }
+    }
 }
 //PROPS
 //  username
