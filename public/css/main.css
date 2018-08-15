@@ -47,7 +47,7 @@ header {
 
 /* Change the color of links on hover */
 .navbar a:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: var(--jeopardy-blue);
     color: #f2f2f2;
 }
 .display {
