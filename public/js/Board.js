@@ -28,3 +28,54 @@
 //    each cell should display the value that's it's worth
 //      onclick event that will toggle to current question
 //  for each cell we give a ternary if spot in clickable array is true - display value amout and have onclick event - display null/blue screen if not clickable
+
+class Board extends React.Component {
+	constructor(props){
+		super(props)
+		this.selectQuestion = this.selectQuestion.bind(this)
+	}
+
+	selectQuestion(cat, row, value) {
+		this.props.selectQuestion(cat, row, value)
+	}
+
+	render() {
+		let categories = this.props.inheritedState.categories
+		let questions = this.props.inheritedState.questions
+		let boardState = this.props.inheritedState.boardState
+		let categoryData = []
+		let boardData = []
+		let fiveArr = [0,1,2,3,4]
+		let sixArr = [0,1,2,3,4,5]
+
+		for (let cat = 0; cat < categories.length; cat++) {
+			categoryData.push(<th>{categories[cat]}</th>)
+		}
+		for (let row = 0; row < questions[0].length; row++) {
+			let rowData = []
+			let value = 1*200 + row*200
+			for (let cat = 0; cat < questions.length; cat++) {
+				rowData.push(
+					(boardState[cat][row])
+						?
+						 	(this.props.inheritedState.showQuestion)
+								?
+									<td>{value}</td>
+								:
+									<td onClick={() => this.selectQuestion(cat, row, value)}>{value}</td>
+						:
+							<td></td>)
+			}
+			boardData.push(<tr>{rowData}</tr>)
+		}
+
+		return <div className="container">
+			<table>
+				<tr className="category_data">
+					{categoryData}
+				</tr>
+				{boardData}
+			</table>
+		</div>
+	}
+}

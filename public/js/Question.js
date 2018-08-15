@@ -1,25 +1,31 @@
-//  #########     CONSTRUCTOR     ###########
-
-//  question
-//    answer toggle to show
-//  PROPS we expect to receive
-//    question
-//    update scoreboard - function passed in from sidebar
-//    toggle prompt - function passed in from sidebar
-
 //   ###########  FUNCTIONS     ###########
+// side bar has score
+// side bar looks at current state to show prompt?
 
-//  answer toggle
-//    get current value and set to !value
 
+//  ##############   RENDER    ###############
+{/*  reveal buttons to declare right, wrong, or didn't answer */}
+{/*  after any of three buttons pressed */}
+{/*  make call to edit score if right or wrong */}
+class Question extends React.Component {
+	render(){
+		return <div class="questionContainer">
+			{/* display question */}
+			<div className="questionDisplay">
+				<h1>{this.props.inheritedState.currentQuestion.question}</h1>
 
-//    #########   RENDER    ###############
-//if looking at a question
-//  show question
-//  show button to reveal answer
-//  if click button to reveal answer
-//    then reveal the answer
-//    reveal buttons to declare right, wrong, or didn't answer
-//  after any of three buttons pressed
-//    make call to edit score if right or wrong
-//    call to toggle prompt
+				<li><strong>Value:</strong> {this.props.inheritedState.currentValue} </li>
+			</div>
+
+			{/* btn to reveal answer for question */}
+			<div className="answer">
+				{(this.props.showAnswer) 
+					? 
+						<li><strong>Answer:</strong>{this.props.inheritedState.answer}</li> 
+					: 
+						null} 
+					<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
+			</div>
+		</div>
+	}
+}
