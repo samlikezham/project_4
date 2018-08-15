@@ -1,6 +1,11 @@
 class User
+	if(ENV['DATABASE_URL'])
+			 uri = URI.parse(ENV['DATABASE_URL'])
+			 DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
+	 else
+			 DB = PG.connect(host: "localhost", port: 5432, dbname: 'simplerails')
+	end
 
-	DB = PG.connect({:host => "localhost", :port => 5432, :dbname => 'jeopardy_development'})
 
 	def self.all
 		results = DB.exec("SELECT * FROM users;")
@@ -48,7 +53,7 @@ class User
 		results = DB.exec(
 			<<-SQL
 				UPDATE users
-				SET username='#{opts["username"]}', 
+				SET username='#{opts["username"]}',
 					password='#{opts["password"]}'
 				WHERE id=#{id}
 				RETURNING id, username, password
@@ -63,6 +68,3 @@ class User
 		}
 	end
 end
-
-
-
