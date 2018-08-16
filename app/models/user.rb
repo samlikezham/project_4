@@ -5,7 +5,7 @@ class User
 			 puts uri
 			 DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 	 else
-			 DB = PG.connect(host: "localhost", port: 5432, dbname: 'simplerails')
+			 DB = PG.connect(host: "", port: 5432, dbname: 'jeopardy_development')
 			 puts "not using env database"
 	end
 
@@ -56,17 +56,15 @@ class User
 		results = DB.exec(
 			<<-SQL
 				UPDATE users
-				SET username='#{opts["username"]}',
-					password='#{opts["password"]}'
+				SET high_score='#{opts["high_score"]}'
 				WHERE id=#{id}
-				RETURNING id, username, password
+				RETURNING id, username, high_score
 			SQL
 		)
 		result = results.first
 		return {
 			"id" => result["id"].to_i,
 			"username" => result["username"],
-			"password" => result["password"],
 			"high_score" => result["high_score"].to_i
 		}
 	end

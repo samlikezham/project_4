@@ -33,7 +33,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.createBoard()
-   	   	fetch('/users')
+   	fetch('/users')
       	.then((response) => {return response.json()})
       	.then((data) => {this.setState({ users: data }) });
   	}
@@ -114,7 +114,11 @@ class App extends React.Component {
 	}
 
 	pickAgain() {
-		this.setState({showQuestion:false, showAnswer:false})
+		let isOver = !this.state.boardState.map((arr) => (arr.reduce((total, current) => (!!total || !!current)))).reduce((total, current) => (!!total || !!current))
+		this.setState({showQuestion:false, showAnswer:false, gameOver:isOver})
+		if (isOver) {
+			this.gameEnd()
+		}
 	}
 
 	// board setter
@@ -136,7 +140,7 @@ class App extends React.Component {
 	handleSubmit(username, password) {
     console.log(username, password)
     event.preventDefault();
-    this.updateCurrentUser(username, password)
+    // this.updateCurrentUser(username, password)
     let body = JSON.stringify({"username": username, "password": password})
     console.log(body)
       fetch('/users', {
@@ -149,15 +153,35 @@ class App extends React.Component {
     }).then((response) => {return response.json()})
       .then((user)=>{
         this.addNewUser(user)
+				this.setState({currentUser: user})
       }).catch(error => console.log(error))
   	}
 
-  	addNewUser(user) {
+  addNewUser(user) {
     this.setState({
       users: this.state.users.concat(user)
     })
-  	}
+  }
 
+	gameEnd() {
+		if (this.state.score > this.state.currentUser.highScore) {
+			fetch('/users/' + this.state.currentUser.id, {
+				method: 'PUT',
+				headers: {
+					'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({"high_score": this.state.score})
+			}).then(response => {return response.json()})
+				.then(user => this.setState({currentUser: user}))
+		}
+	}
+
+	deleteUser() {
+		fetch('/users/' + this.state.currentUser.id, {
+			method: 'DELETE'			
+		}).then(() => this.setState({currentUser: null}))
+	}
 
 	// sign out
 	signOut() {
@@ -181,7 +205,7 @@ class App extends React.Component {
 							?
 							[
 								<Greeting
-									username={this.state.currentUser}
+									username={this.state.currentUser.username}
 									signOut={this.signOut}
 								/>,
 								<Board
