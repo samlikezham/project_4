@@ -15,7 +15,7 @@ class App extends React.Component {
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.signOut = this.signOut.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
-    this.addNewUser = this.addNewUser.bind(this)
+    	this.addNewUser = this.addNewUser.bind(this)
 		this.gameEnd = this.gameEnd.bind(this)
 		this.deleteUser = this.deleteUser.bind(this)
 
@@ -145,19 +145,43 @@ class App extends React.Component {
     // this.updateCurrentUser(username, password)
     let body = JSON.stringify({"username": username, "password": password})
     console.log(body)
-      fetch('/users', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-      },
-      body: body,
-    }).then((response) => {return response.json()})
-      .then((user)=>{
-        this.addNewUser(user)
-				this.setState({currentUser: user})
-      }).catch(error => console.log(error))
-  	}
+		fetch('/users/login', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+			},
+			body: body
+		}).then(response => response.json())
+			.then(foundUser => {
+				if (!!foundUser) {
+					this.setState({currentUser: foundUser})
+					this.createBoard()
+				} else {
+					fetch('/users/find/' + username)
+						.then(response => response.json())
+						.then(user => {
+							if (!!user) {
+								return
+							} else {
+								fetch('/users', {
+									method: 'POST',
+									headers: {
+										'Accept': 'application/json, text/plain, */*',
+										'Content-Type': 'application/json'
+									},
+									body: body,
+								}).then((response) => {return response.json()})
+								.then((user)=>{
+									this.addNewUser(user)
+									this.setState({currentUser: user})
+									this.createBoard()
+								}).catch(error => console.log(error))
+							}
+						})
+				}
+			})
+  }
 
   addNewUser(user) {
     this.setState({
@@ -166,8 +190,6 @@ class App extends React.Component {
   }
 
 	gameEnd() {
-		console.log('### score ', this.state.score);
-		console.log('### high score ',  this.state.currentUser.high_score);
 		if (this.state.score > this.state.currentUser.high_score) {
 			fetch('/users/' + this.state.currentUser.id, {
 				method: 'PUT',
@@ -212,6 +234,7 @@ class App extends React.Component {
 									deleteUser={this.deleteUser}
 									username={this.state.currentUser.username}
 									signOut={this.signOut}
+									currentHighScore={this.state.currentUser.high_score}
 								/>,
 								<Board
 									inheritedState={this.state}

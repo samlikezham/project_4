@@ -21,6 +21,38 @@ class User
 		end
 	end
 
+	def self.login(opts)
+		results = DB.exec(
+			<<-SQL
+				SELECT * FROM users
+				WHERE username='#{opts["username"]}'
+					AND password='#{opts["password"]}'
+			SQL
+		)
+		result = results.first
+		if (!!result)
+			return {
+				"id" => result["id"].to_i,
+				"username" => result["username"],
+				"high_score" => result["high_score"].to_i
+			}
+		else
+			return nil
+		end
+	end
+
+	def self.checkUser(name)
+		results = DB.exec("SELECT * FROM users WHERE username='#{name}'")
+		result = results.first
+		if (!!result)
+			return {
+				"username" => result["username"]
+			}
+		else
+			return nil
+		end
+	end
+
 	def self.find(id)
 		results = DB.exec("SELECT * FROM users WHERE id=#{id};")
 		result = results.first

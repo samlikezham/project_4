@@ -20,4 +20,12 @@ class UsersController < ApplicationController
   def update
     render json: User.update(params["id"], params["user"])
   end
+
+  def login
+    render json: User.login(params["user"])
+  end
+
+  def checkUser
+    render json: User.checkUser(params["name"])
+  end
 end
