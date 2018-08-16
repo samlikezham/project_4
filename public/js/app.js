@@ -173,7 +173,7 @@ class App extends React.Component {
 	}
 
 	render(){
-		return <div>
+		return <div class="appContainer">
 				{/* board */}
 				<div class="mainContainer">
 					{(this.state.currentUser)
@@ -201,7 +201,7 @@ class App extends React.Component {
 
 
 				{/* sidebar and auth */}
-				<div className="sidebar">
+				<div class="sidebar">
 					<Sidebar
 						inheritedState={this.state}
 						toggleAnswer={this.toggleAnswer}
