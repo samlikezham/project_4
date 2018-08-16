@@ -9,7 +9,7 @@ class Auth extends React.Component {
     return(
       <div className='field'>
         <h2>Log In</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form >
         <h3>Create Account</h3>
           <label className='label' for='username'>Username</label>
           <div>
@@ -27,10 +27,10 @@ class Auth extends React.Component {
               type='password'
               id='password' />
           </div>
-            <input className='button is-primary'
+            <button className='button is-primary'
               onClick={()=>
                 this.props.handleSubmit(formFields.username.value, formFields.password.value)}
-            type='submit' value="Create Account"/>
+             value="Create Account"/>
         </form>
       </div>
     )
