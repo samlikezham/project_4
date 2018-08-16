@@ -13,19 +13,12 @@ class Question extends React.Component {
 			{/* display question */}
 			<div className="questionDisplay">
 				<h1>{this.props.inheritedState.currentQuestion.question}</h1>
-
-				<li><strong>Value:</strong> {this.props.inheritedState.currentValue} </li>
 			</div>
 
 			{/* btn to reveal answer for question */}
-			<div className="answer">
-				{(this.props.showAnswer)
-					?
-						<li><strong>Answer:</strong>{this.props.inheritedState.answer}</li>
-					:
-						null}
-					<button className="reveal_btn" onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
-			</div>
+			{(this.props.inheritedState.showAnswer)? null : <div className="answer">
+				<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
+			</div>}
 		</div>
 	}
 }

@@ -49,9 +49,6 @@ class Sidebar extends React.Component {
 	        addToScore={this.props.addToScore}
 	        subtractScore={this.props.subtractScore}
         /> : null}
-        <div>
-        {users}
-        </div>
       </div>
     )
   }

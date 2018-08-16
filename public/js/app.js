@@ -15,7 +15,9 @@ class App extends React.Component {
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.signOut = this.signOut.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
-    	this.addNewUser = this.addNewUser.bind(this)
+    this.addNewUser = this.addNewUser.bind(this)
+		this.gameEnd = this.gameEnd.bind(this)
+		this.deleteUser = this.deleteUser.bind(this)
 
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
@@ -33,7 +35,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.createBoard()
-   	   	fetch('/users')
+   	fetch('/users')
       	.then((response) => {return response.json()})
       	.then((data) => {this.setState({ users: data }) });
   	}
@@ -114,7 +116,11 @@ class App extends React.Component {
 	}
 
 	pickAgain() {
-		this.setState({showQuestion:false, showAnswer:false})
+		let isOver = !this.state.boardState.map((arr) => (arr.reduce((total, current) => (!!total || !!current)))).reduce((total, current) => (!!total || !!current))
+		this.setState({showQuestion:false, showAnswer:false, gameOver:isOver})
+		if (isOver) {
+			this.gameEnd()
+		}
 	}
 
 	// board setter
@@ -136,7 +142,7 @@ class App extends React.Component {
 	handleSubmit(username, password) {
     console.log(username, password)
     event.preventDefault();
-    this.updateCurrentUser(username, password)
+    // this.updateCurrentUser(username, password)
     let body = JSON.stringify({"username": username, "password": password})
     console.log(body)
       fetch('/users', {
@@ -149,15 +155,37 @@ class App extends React.Component {
     }).then((response) => {return response.json()})
       .then((user)=>{
         this.addNewUser(user)
+				this.setState({currentUser: user})
       }).catch(error => console.log(error))
   	}
 
-  	addNewUser(user) {
+  addNewUser(user) {
     this.setState({
       users: this.state.users.concat(user)
     })
-  	}
+  }
 
+	gameEnd() {
+		console.log('### score ', this.state.score);
+		console.log('### high score ',  this.state.currentUser.high_score);
+		if (this.state.score > this.state.currentUser.high_score) {
+			fetch('/users/' + this.state.currentUser.id, {
+				method: 'PUT',
+				headers: {
+					'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({"high_score": this.state.score})
+			}).then(response => {return response.json()})
+				.then(user => this.setState({currentUser: user}))
+		}
+	}
+
+	deleteUser() {
+		fetch('/users/' + this.state.currentUser.id, {
+			method: 'DELETE'
+		}).then(() => this.setState({currentUser: null}))
+	}
 
 	// sign out
 	signOut() {
@@ -173,7 +201,7 @@ class App extends React.Component {
 	}
 
 	render(){
-		return <div>
+		return <div class="appContainer">
 				{/* board */}
 				<div class="mainContainer">
 					{(this.state.currentUser)
@@ -181,7 +209,8 @@ class App extends React.Component {
 							?
 							[
 								<Greeting
-									username={this.state.currentUser}
+									deleteUser={this.deleteUser}
+									username={this.state.currentUser.username}
 									signOut={this.signOut}
 								/>,
 								<Board
@@ -201,7 +230,7 @@ class App extends React.Component {
 
 
 				{/* sidebar and auth */}
-				<div className="sidebar">
+				<div class="sidebar">
 					<Sidebar
 						inheritedState={this.state}
 						toggleAnswer={this.toggleAnswer}
