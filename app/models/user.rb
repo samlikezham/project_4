@@ -5,7 +5,7 @@ class User
 			 puts uri
 			 DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 	 else
-			 DB = PG.connect(host: "localhost", port: 5432, dbname: 'simplerails')
+			 DB = PG.connect(host: "", port: 5432, dbname: 'jeopardy_development')
 			 puts "not using env database"
 	end
 
