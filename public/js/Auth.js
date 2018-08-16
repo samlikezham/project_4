@@ -7,30 +7,29 @@ class Auth extends React.Component {
 
     let formFields = {}
     return(
+      <div className='login'>
       <div className='field'>
         <form onSubmit={this.handleSubmit}>
-        <h3>Create Account</h3>
-          <label className='label' for='username'>Username</label>
           <div>
-            <input 
+            <input
               className='input'
               ref={usernameInput => formFields.username = usernameInput}
               type='text'
-              id='username' />
+              id='username' placeholder="username" />
           </div>
-          <label className='label' for='password'>Password</label>
           <div>
             <input åå
               className='input'
               ref={passwordInput => formFields.password = passwordInput}
               type='password'
-              id='password' />
+              id='password' placeholder="password" />
           </div>
-            <input className='button is-primary' 
-              onClick={()=> 
+            <input className='submit_login'
+              onClick={()=>
                 this.props.handleSubmit(formFields.username.value, formFields.password.value)}
             type='submit' value="Create Account"/>
         </form>
+      </div>
       </div>
     )
     }
