@@ -209,6 +209,7 @@ class App extends React.Component {
 							?
 							[
 								<Greeting
+									deleteUser={this.deleteUser}
 									username={this.state.currentUser.username}
 									signOut={this.signOut}
 									currentHighScore={this.state.currentUser.high_score}
