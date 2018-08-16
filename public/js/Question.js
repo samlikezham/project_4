@@ -24,7 +24,7 @@ class Question extends React.Component {
 						<li><strong>Answer:</strong>{this.props.inheritedState.answer}</li>
 					:
 						null}
-					<button onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
+					<button className="reveal_btn" onClick={()=> {this.props.toggleAnswer()}}>Click to Reveal Answer</button>
 			</div>
 		</div>
 	}
