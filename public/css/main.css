@@ -3,6 +3,10 @@
   --lightest-grey: #e6e6e8;
   --silver: #c0c0c0;
   --yellow-highlight: rgba(235,215,0,1);
+  --soft-white: #f2f2f2;
+  --success-green: #488543;
+  --error-red: #cc0000;
+  --warning-yellow: #FDDC22;
 }
 body {
   background: rgba(6, 12, 233, 0.8);
@@ -12,8 +16,52 @@ body {
 }
 .page {
   min-height:100%;
-     position:relative;
+  position:relative;
 }
+/* login form */
+.login {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.field {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.submit_login {
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--jeopardy-blue);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: var(--soft-white);
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.submit_login:hover {
+  background: var(--silver);
+  box-shadow: 0px 37px 20px -20px rgba(0,0,0,0.2);
+}
+/* jeopardy logo */
 header {
   width: 100%;
   height: 200px;
@@ -23,7 +71,7 @@ header {
   padding: 10px;
   margin: 0 auto;
 }
-/* Place the navbar at the bottom of the page, and make it stick */
+/* navbar/footer bottom sticky */
 .navbar {
     background-color: var(--silver);
     color: black;
@@ -33,11 +81,11 @@ header {
     width: 100%;
 }
 
-/* Style the links inside the navigation bar */
+/* links inside the navbar */
 .navbar a {
     float: left;
     display: block;
-    color: rgba(0,0,0,0.8);
+    color: var(--jeopardy-blue);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -48,15 +96,18 @@ header {
 /* Change the color of links on hover */
 .navbar a:hover {
     background-color: var(--jeopardy-blue);
-    color: #f2f2f2;
+    color: var(--soft-white);
 }
+/* sidebar */
 .display {
   background: var(--jeopardy-blue);
+  position: relative;
   width: 25%;
   float: right;
-  height: 650px;
+  min-height: 650px;
+  max-height: 1036px;
   border: 5px groove var(--silver);
-  color: white;
+  color: var(--soft-white);
   padding: 15px;
   margin: 2%;
   font-size: 1.5em;
@@ -68,14 +119,9 @@ header {
   font-size: 2.5em;
   padding-top: 10px;
   text-shadow: 2px 2px 4px #000000;
-/* add transition */
+  transition:
 }
-
-.score_increase {
-  /* transition-duration: color 0.5s;
-  color: rgba(235,215,0,1); */
-
-}
+/* gameboard */
 table {
   width: 66%;
   float: right;
@@ -86,6 +132,7 @@ table {
   padding-bottom:60px;
 
 }
+/* categories */
 th {
   width: 250px;
   height: 200px;
@@ -96,6 +143,7 @@ th {
   padding: 0 5px;
   background: var(--jeopardy-blue);
 }
+/* answers */
 td {
   border: 3px solid rgba(0,0,0,0.8);
   width: 250px;
@@ -111,24 +159,59 @@ td:hover {
   border: 3px solid rgba(235,215,0,1);
   box-shadow: inset 0px 0px 20px 3px rgba(235,215,0,1);
 }
-
+/* buttons */
+.scoreBtns {
+  position: relative;
+}
 
 button {
   display: inline-block;
   padding: 0.3em 1.2em;
-  margin: 0 0.6em 0;
-  border-radius: 2em;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  margin: 0.6em 0.6em 0;
+  border-radius: 3%;
+  box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4);
   font-size: 0.8em;
-}
-button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  font-weight: bold;
 }
 
+.reveal_btn {
+  background: var(--soft-white);
+  -webkit-transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.5s;
+}
+.reveal_btn:hover {
+  background: var(--silver);
+  box-shadow: 0px 37px 20px -20px rgba(0,0,0,0.2);
+  transform: translate(0px, -10px) scale(1.1);
+}
+.correct_btn {
+  background: var(--success-green);
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+.correct_btn:hover {
+  background: #9dce3b;
+}
+.incorrect_btn {
+  background: var(--error-red);
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+.incorrect_btn:hover {
+  background: #fd3a0f;
+}
+.noanswer_btn {
+  background: var(--warning-yellow);
+  -webkit-ransition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+.noanswer_btn:hover {
+  background: #FEFE33;
+}
 /* ####### display size ######## */
 /* med screens */
 @media screen and (max-width: 600px) {
-  table {
+   table {
     width: 100%;
   }
   .display {
@@ -142,12 +225,15 @@ flex-wrap: wrap;
 /* small screens */
 @media screen and (max-width: 400px) {
   table {
-    width: 100%;
+    overflow-x: auto;
+        display: block;
   }
   .display {
-    width: 100%
+    overflow-x: auto;
+        display: block;
   }
   .main-nav li {
     flex-basis: 100%;
   }
+
 }
