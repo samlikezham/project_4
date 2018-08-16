@@ -15,7 +15,9 @@ class App extends React.Component {
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.signOut = this.signOut.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
-    	this.addNewUser = this.addNewUser.bind(this)
+    this.addNewUser = this.addNewUser.bind(this)
+		this.gameEnd = this.gameEnd.bind(this)
+		this.deleteUser = this.deleteUser.bind(this)
 
 		this.state ={
 			boardState: false, // describes whether each question on the board has been selected
@@ -164,7 +166,9 @@ class App extends React.Component {
   }
 
 	gameEnd() {
-		if (this.state.score > this.state.currentUser.highScore) {
+		console.log('### score ', this.state.score);
+		console.log('### high score ',  this.state.currentUser.high_score);
+		if (this.state.score > this.state.currentUser.high_score) {
 			fetch('/users/' + this.state.currentUser.id, {
 				method: 'PUT',
 				headers: {
@@ -179,7 +183,7 @@ class App extends React.Component {
 
 	deleteUser() {
 		fetch('/users/' + this.state.currentUser.id, {
-			method: 'DELETE'			
+			method: 'DELETE'
 		}).then(() => this.setState({currentUser: null}))
 	}
 
