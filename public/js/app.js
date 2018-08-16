@@ -15,7 +15,7 @@ class App extends React.Component {
 		this.updateCurrentUser = this.updateCurrentUser.bind(this)
 		this.signOut = this.signOut.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
-    this.addNewUser = this.addNewUser.bind(this)
+    	this.addNewUser = this.addNewUser.bind(this)
 		this.gameEnd = this.gameEnd.bind(this)
 		this.deleteUser = this.deleteUser.bind(this)
 
@@ -211,6 +211,7 @@ class App extends React.Component {
 								<Greeting
 									username={this.state.currentUser.username}
 									signOut={this.signOut}
+									currentHighScore={this.state.currentUser.high_score}
 								/>,
 								<Board
 									inheritedState={this.state}
